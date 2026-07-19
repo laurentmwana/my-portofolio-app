@@ -11,8 +11,8 @@ export function ModeToggle({ className }: ModeToggleProps) {
 	return (
 		<AnimatedThemeToggler
 			className={className}
-			theme={theme === "dark" ? "dark" : "light"}
-			onThemeChange={(t) => setTheme(t === "dark" ? "light" : "dark")}
+			theme={theme}
+			onThemeChange={setTheme}
 			size="sm"
 		/>
 	);

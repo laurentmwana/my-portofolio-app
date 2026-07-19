@@ -31,10 +31,10 @@ interface AnimatedThemeTogglerProps
 	 * Controlled theme value. When provided, the parent owns persistence
 	 * (e.g. `next-themes`) and this component will not write to localStorage.
 	 */
-	theme?: "light" | "dark";
+	theme?: "light" | "dark" | "system";
 	iconClass?: string;
 	size: ButtonSize /** Called on toggle. Pair with `theme` for controlled usage. */;
-	onThemeChange?: (theme: "light" | "dark") => void;
+	onThemeChange?: (theme: "light" | "dark" | "system") => void;
 }
 
 function polygonCollapsed(cx: number, cy: number, vertexCount: number): string {

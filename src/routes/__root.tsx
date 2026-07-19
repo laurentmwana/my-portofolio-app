@@ -42,7 +42,7 @@ function RootDocument() {
 			</head>
 			<body>
 				<ThemeProvider defaultTheme="system" storageKey="theme">
-					<TooltipProvider>
+					<TooltipProvider delay={0}>
 						<Outlet />
 					</TooltipProvider>
 				</ThemeProvider>
