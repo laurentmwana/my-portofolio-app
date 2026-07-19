@@ -1,5 +1,10 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
-import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import {
+	createRootRoute,
+	HeadContent,
+	Outlet,
+	Scripts,
+} from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { ThemeProvider } from "#/components/themes/theme-provider";
 import { TooltipProvider } from "#/components/ui/tooltip";
@@ -29,7 +34,7 @@ export const Route = createRootRoute({
 	shellComponent: RootDocument,
 });
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootDocument() {
 	return (
 		<html lang="fr" suppressHydrationWarning>
 			<head>
@@ -37,7 +42,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 			</head>
 			<body>
 				<ThemeProvider defaultTheme="system" storageKey="theme">
-					<TooltipProvider>{children}</TooltipProvider>
+					<TooltipProvider>
+						<Outlet />
+					</TooltipProvider>
 				</ThemeProvider>
 				<TanStackDevtools
 					config={{

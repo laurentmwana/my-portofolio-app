@@ -1,13 +1,22 @@
 import { Moon, Sun } from "lucide-react";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from "#/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { cn } from "@/lib/utils";
 import { useTheme } from "./theme-provider";
+
+type ModeToggleProps = { className?: string };
+
+export function ModeToggle({ className }: ModeToggleProps) {
+	const { setTheme, theme } = useTheme();
+
+	return (
+		<AnimatedThemeToggler
+			className={className}
+			theme={theme === "dark" ? "dark" : "light"}
+			onThemeChange={(t) => setTheme(t === "dark" ? "light" : "dark")}
+			size="sm"
+		/>
+	);
+}
 
 export function ThemeToggle({ className }: { className?: string }) {
 	const { theme, setTheme } = useTheme();

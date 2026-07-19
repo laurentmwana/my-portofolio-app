@@ -1,16 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { HeroHeader } from "#/features/welcome/hero-header";
-import { Presentation } from "#/features/welcome/presentation";
+import { Navbar } from "#/components/sections/navbar/default";
 
 export const Route = createFileRoute("/")({ component: Home });
 
-const BLUR_FADE_DELAY = 0.5;
-
 function Home() {
 	return (
-		<div>
-			<HeroHeader />
-			<Presentation />
+		<div className="flex flex-col min-h-[100dvh] space-y-10">
+			<Navbar />
 		</div>
 	);
 }

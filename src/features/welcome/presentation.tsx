@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/avatar";
 import { BlurFade } from "#/components/ui/blur-fade";
 import { BlurFadeText } from "#/components/ui/blur-fade-text";
-import { DATA } from "#/config/data.config";
+import { DATA } from "#/config/resume";
 
 const BLUR_FADE_DELAY = 0.5;
 
