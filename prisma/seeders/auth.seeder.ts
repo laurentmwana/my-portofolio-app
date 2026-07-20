@@ -1,21 +1,15 @@
 import { auth } from "#/lib/auth";
 import { prisma } from "#/lib/prisma";
 
+const DEFAULT_EMAIl = "laurentmwn@gmail.com"
+const DEFAULT_PASSWORD = "changeme123"
+
 export async function authSeeder() {
-  const email = "laurentmwn@gmail.com";
-
-  const existing = await prisma.user.findUnique({ where: { email } });
-
-  if (existing) {
-    console.log("User already exists, skipping:", existing.email);
-    return;
-  }
-
   const result = await auth.api.signUpEmail({
     body: {
       name: "Labeya",
-      email,
-      password: "changeme123",
+      email: DEFAULT_EMAIl,
+      password: DEFAULT_PASSWORD,
     },
   });
 
@@ -23,6 +17,4 @@ export async function authSeeder() {
     where: { id: result.user.id },
     data: { emailVerified: true },
   });
-
-  console.log("Created user:", result.user);
 }

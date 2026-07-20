@@ -10,12 +10,58 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GuestRouteImport } from './routes/_guest'
+import { Route as ProtectedRouteImport } from './routes/_protected'
+import { Route as GuestAuthRouteImport } from './routes/_guest/auth'
+import { Route as ProtectedDashboardRouteImport } from './routes/_protected/dashboard'
+import { Route as LegalCgvRouteImport } from './routes/legal/cgv'
+import { Route as LegalPrivacyRouteImport } from './routes/legal/privacy'
+import { Route as GuestAuthDemoRouteImport } from './routes/_guest/auth/demo'
+import { Route as GuestAuthLoginRouteImport } from './routes/_guest/auth/login'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const GuestRoute = GuestRouteImport.update({
+  id: '/_guest',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProtectedRoute = ProtectedRouteImport.update({
+  id: '/_protected',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuestAuthRoute = GuestAuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => GuestRoute,
+} as any)
+const ProtectedDashboardRoute = ProtectedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+const LegalCgvRoute = LegalCgvRouteImport.update({
+  id: '/legal/cgv',
+  path: '/legal/cgv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
+  id: '/legal/privacy',
+  path: '/legal/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuestAuthDemoRoute = GuestAuthDemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => GuestAuthRoute,
+} as any)
+const GuestAuthLoginRoute = GuestAuthLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => GuestAuthRoute,
 } as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
@@ -25,27 +71,78 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof GuestAuthRouteWithChildren
+  '/dashboard': typeof ProtectedDashboardRoute
+  '/legal/cgv': typeof LegalCgvRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/auth/demo': typeof GuestAuthDemoRoute
+  '/auth/login': typeof GuestAuthLoginRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof GuestAuthRouteWithChildren
+  '/dashboard': typeof ProtectedDashboardRoute
+  '/legal/cgv': typeof LegalCgvRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/auth/demo': typeof GuestAuthDemoRoute
+  '/auth/login': typeof GuestAuthLoginRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_guest': typeof GuestRouteWithChildren
+  '/_protected': typeof ProtectedRouteWithChildren
+  '/_guest/auth': typeof GuestAuthRouteWithChildren
+  '/_protected/dashboard': typeof ProtectedDashboardRoute
+  '/legal/cgv': typeof LegalCgvRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/_guest/auth/demo': typeof GuestAuthDemoRoute
+  '/_guest/auth/login': typeof GuestAuthLoginRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/auth/$'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/legal/cgv'
+    | '/legal/privacy'
+    | '/auth/demo'
+    | '/auth/login'
+    | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/auth/$'
-  id: '__root__' | '/' | '/api/auth/$'
+  to:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/legal/cgv'
+    | '/legal/privacy'
+    | '/auth/demo'
+    | '/auth/login'
+    | '/api/auth/$'
+  id:
+    | '__root__'
+    | '/'
+    | '/_guest'
+    | '/_protected'
+    | '/_guest/auth'
+    | '/_protected/dashboard'
+    | '/legal/cgv'
+    | '/legal/privacy'
+    | '/_guest/auth/demo'
+    | '/_guest/auth/login'
+    | '/api/auth/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GuestRoute: typeof GuestRouteWithChildren
+  ProtectedRoute: typeof ProtectedRouteWithChildren
+  LegalCgvRoute: typeof LegalCgvRoute
+  LegalPrivacyRoute: typeof LegalPrivacyRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -58,6 +155,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_guest': {
+      id: '/_guest'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof GuestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_protected': {
+      id: '/_protected'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof ProtectedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_guest/auth': {
+      id: '/_guest/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof GuestAuthRouteImport
+      parentRoute: typeof GuestRoute
+    }
+    '/_protected/dashboard': {
+      id: '/_protected/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof ProtectedDashboardRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/legal/cgv': {
+      id: '/legal/cgv'
+      path: '/legal/cgv'
+      fullPath: '/legal/cgv'
+      preLoaderRoute: typeof LegalCgvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/privacy': {
+      id: '/legal/privacy'
+      path: '/legal/privacy'
+      fullPath: '/legal/privacy'
+      preLoaderRoute: typeof LegalPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_guest/auth/demo': {
+      id: '/_guest/auth/demo'
+      path: '/demo'
+      fullPath: '/auth/demo'
+      preLoaderRoute: typeof GuestAuthDemoRouteImport
+      parentRoute: typeof GuestAuthRoute
+    }
+    '/_guest/auth/login': {
+      id: '/_guest/auth/login'
+      path: '/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof GuestAuthLoginRouteImport
+      parentRoute: typeof GuestAuthRoute
+    }
     '/api/auth/$': {
       id: '/api/auth/$'
       path: '/api/auth/$'
@@ -68,8 +221,48 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface GuestAuthRouteChildren {
+  GuestAuthDemoRoute: typeof GuestAuthDemoRoute
+  GuestAuthLoginRoute: typeof GuestAuthLoginRoute
+}
+
+const GuestAuthRouteChildren: GuestAuthRouteChildren = {
+  GuestAuthDemoRoute: GuestAuthDemoRoute,
+  GuestAuthLoginRoute: GuestAuthLoginRoute,
+}
+
+const GuestAuthRouteWithChildren = GuestAuthRoute._addFileChildren(
+  GuestAuthRouteChildren,
+)
+
+interface GuestRouteChildren {
+  GuestAuthRoute: typeof GuestAuthRouteWithChildren
+}
+
+const GuestRouteChildren: GuestRouteChildren = {
+  GuestAuthRoute: GuestAuthRouteWithChildren,
+}
+
+const GuestRouteWithChildren = GuestRoute._addFileChildren(GuestRouteChildren)
+
+interface ProtectedRouteChildren {
+  ProtectedDashboardRoute: typeof ProtectedDashboardRoute
+}
+
+const ProtectedRouteChildren: ProtectedRouteChildren = {
+  ProtectedDashboardRoute: ProtectedDashboardRoute,
+}
+
+const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
+  ProtectedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GuestRoute: GuestRouteWithChildren,
+  ProtectedRoute: ProtectedRouteWithChildren,
+  LegalCgvRoute: LegalCgvRoute,
+  LegalPrivacyRoute: LegalPrivacyRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport

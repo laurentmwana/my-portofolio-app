@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "#/components/sections/navbar/default";
 import { HeroHeader } from "#/features/welcome/hero-header";
 import { Presentation } from "#/features/welcome/presentation";
+import { authClient } from "#/lib/auth-client";
 
 export const Route = createFileRoute("/")({ component: Home });
 

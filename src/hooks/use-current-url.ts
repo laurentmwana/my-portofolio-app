@@ -1,0 +1,76 @@
+import { type LinkProps, useLocation } from "@tanstack/react-router";
+
+export type IsCurrentUrlFn = (
+	urlToCheck: NonNullable<LinkProps["href"]>,
+	currentUrl?: string,
+	startsWith?: boolean,
+) => boolean;
+
+export type IsCurrentOrParentUrlFn = (
+	urlToCheck: NonNullable<LinkProps["href"]>,
+	currentUrl?: string,
+) => boolean;
+
+export type WhenCurrentUrlFn = <TIfTrue, TIfFalse = null>(
+	urlToCheck: NonNullable<LinkProps["href"]>,
+	ifTrue: TIfTrue,
+	ifFalse?: TIfFalse,
+) => TIfTrue | TIfFalse;
+
+export type UseCurrentUrlReturn = {
+	currentUrl: string;
+	isCurrentUrl: IsCurrentUrlFn;
+	isCurrentOrParentUrl: IsCurrentOrParentUrlFn;
+	whenCurrentUrl: WhenCurrentUrlFn;
+};
+
+export function useCurrentUrl(): UseCurrentUrlReturn {
+	const location = useLocation();
+	const currentUrlPath = location.pathname;
+
+	const isCurrentUrl: IsCurrentUrlFn = (
+		urlToCheck: NonNullable<LinkProps["href"]>,
+		currentUrl?: string,
+		startsWith: boolean = false,
+	) => {
+		const urlToCompare = currentUrl ?? currentUrlPath;
+		const urlString = toUrl(urlToCheck);
+
+		const comparePath = (path: string): boolean =>
+			startsWith ? urlToCompare.startsWith(path) : path === urlToCompare;
+
+		if (!urlString.startsWith("http")) {
+			return comparePath(urlString);
+		}
+
+		try {
+			const absoluteUrl = new URL(urlString);
+
+			return comparePath(absoluteUrl.pathname);
+		} catch {
+			return false;
+		}
+	};
+
+	const isCurrentOrParentUrl: IsCurrentOrParentUrlFn = (
+		urlToCheck: NonNullable<LinkProps["href"]>,
+		currentUrl?: string,
+	) => {
+		return isCurrentUrl(urlToCheck, currentUrl, true);
+	};
+
+	const whenCurrentUrl: WhenCurrentUrlFn = <TIfTrue, TIfFalse = null>(
+		urlToCheck: NonNullable<LinkProps["href"]>,
+		ifTrue: TIfTrue,
+		ifFalse: TIfFalse = null as TIfFalse,
+	): TIfTrue | TIfFalse => {
+		return isCurrentUrl(urlToCheck) ? ifTrue : ifFalse;
+	};
+
+	return {
+		currentUrl: currentUrlPath,
+		isCurrentUrl,
+		isCurrentOrParentUrl,
+		whenCurrentUrl,
+	};
+}
