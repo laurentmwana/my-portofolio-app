@@ -14,6 +14,7 @@ import { Route as GuestRouteImport } from './routes/_guest'
 import { Route as ProtectedRouteImport } from './routes/_protected'
 import { Route as GuestAuthRouteImport } from './routes/_guest/auth'
 import { Route as ProtectedDashboardRouteImport } from './routes/_protected/dashboard'
+import { Route as ProtectedProfileRouteImport } from './routes/_protected/profile'
 import { Route as LegalCgvRouteImport } from './routes/legal/cgv'
 import { Route as LegalPrivacyRouteImport } from './routes/legal/privacy'
 import { Route as GuestAuthDemoRouteImport } from './routes/_guest/auth/demo'
@@ -41,6 +42,11 @@ const GuestAuthRoute = GuestAuthRouteImport.update({
 const ProtectedDashboardRoute = ProtectedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+const ProtectedProfileRoute = ProtectedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => ProtectedRoute,
 } as any)
 const LegalCgvRoute = LegalCgvRouteImport.update({
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof GuestAuthRouteWithChildren
   '/dashboard': typeof ProtectedDashboardRoute
+  '/profile': typeof ProtectedProfileRoute
   '/legal/cgv': typeof LegalCgvRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/auth/demo': typeof GuestAuthDemoRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof GuestAuthRouteWithChildren
   '/dashboard': typeof ProtectedDashboardRoute
+  '/profile': typeof ProtectedProfileRoute
   '/legal/cgv': typeof LegalCgvRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/auth/demo': typeof GuestAuthDemoRoute
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/_protected': typeof ProtectedRouteWithChildren
   '/_guest/auth': typeof GuestAuthRouteWithChildren
   '/_protected/dashboard': typeof ProtectedDashboardRoute
+  '/_protected/profile': typeof ProtectedProfileRoute
   '/legal/cgv': typeof LegalCgvRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/_guest/auth/demo': typeof GuestAuthDemoRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/dashboard'
+    | '/profile'
     | '/legal/cgv'
     | '/legal/privacy'
     | '/auth/demo'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/dashboard'
+    | '/profile'
     | '/legal/cgv'
     | '/legal/privacy'
     | '/auth/demo'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/_protected'
     | '/_guest/auth'
     | '/_protected/dashboard'
+    | '/_protected/profile'
     | '/legal/cgv'
     | '/legal/privacy'
     | '/_guest/auth/demo'
@@ -181,6 +193,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof ProtectedDashboardRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/profile': {
+      id: '/_protected/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProtectedProfileRouteImport
       parentRoute: typeof ProtectedRoute
     }
     '/legal/cgv': {
@@ -247,10 +266,12 @@ const GuestRouteWithChildren = GuestRoute._addFileChildren(GuestRouteChildren)
 
 interface ProtectedRouteChildren {
   ProtectedDashboardRoute: typeof ProtectedDashboardRoute
+  ProtectedProfileRoute: typeof ProtectedProfileRoute
 }
 
 const ProtectedRouteChildren: ProtectedRouteChildren = {
   ProtectedDashboardRoute: ProtectedDashboardRoute,
+  ProtectedProfileRoute: ProtectedProfileRoute,
 }
 
 const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(

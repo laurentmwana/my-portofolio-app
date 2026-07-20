@@ -135,5 +135,13 @@
 }
 
 .container {
-      @apply relative z-10 max-w-5xl mx-auto py-12 sm:py-24 px-6
+      @apply relative z-10 max-w-5xl mx-auto py-12 sm:py-24 px-6;
+}
+
+.container-sm {
+      @apply w-full max-w-4xl mx-auto py-5 px-1;
+}
+
+.container-md {
+      @apply w-full max-w-5xl mx-auto py-5 px-1;
 }
