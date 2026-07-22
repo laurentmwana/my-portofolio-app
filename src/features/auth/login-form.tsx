@@ -1,15 +1,12 @@
 import { useForm } from "@tanstack/react-form";
-import { Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Alert, AlertDescription } from "#/components/ui/alert";
-import { ButtonLink } from "#/components/ui/button-link";
 import { ButtonLoader } from "#/components/ui/button-loader";
 import {
 	Field,
 	FieldError,
 	FieldGroup,
 	FieldLabel,
-	FieldSeparator,
 } from "#/components/ui/field";
 import { Input } from "#/components/ui/input";
 import { cn } from "#/lib/utils";
@@ -145,20 +142,6 @@ export const LoginForm: React.FC<Props> = ({
 								</ButtonLoader>
 							)}
 						</form.Subscribe>
-					</Field>
-
-					<FieldSeparator>Ou</FieldSeparator>
-
-					<Field>
-						<ButtonLink
-							disabled={isPending}
-							href="/auth/magic-login"
-							variant="outline"
-							type="button"
-						>
-							<Sparkles className="size-4" />
-							Recevoir un lien de connexion
-						</ButtonLink>
 					</Field>
 				</FieldGroup>
 			</form>

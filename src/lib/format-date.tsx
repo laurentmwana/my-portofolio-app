@@ -22,3 +22,18 @@ export function formatRelativeDate(dateString: string) {
 
 	return "";
 }
+
+const formatter = new Intl.DateTimeFormat("fr-FR", {
+	month: "short",
+	year: "numeric",
+});
+
+export function formatMonthYear(date: Date) {
+	return formatter.format(date);
+}
+
+export function formatDateRange(start: Date, end: Date | null) {
+	const startLabel = formatMonthYear(start);
+	if (!end) return `${startLabel} — Présent`;
+	return `${startLabel} — ${formatMonthYear(end)}`;
+}

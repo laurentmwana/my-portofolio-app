@@ -23,20 +23,8 @@ export const DATA = {
 		"I am a software engineer and entrepreneur with a passion for building innovative products. I have experience in full-stack development, cloud computing, and product management. I am currently focused on building and scaling my own SaaS businesses.",
 	summary:
 		"I am a software engineer and entrepreneur with a passion for building innovative products. I have experience in full-stack development, cloud computing, and product management. I am currently focused on building and scaling my own SaaS businesses.",
-	avatarUrl: "/me.png",
-	skills: [
-		{ name: "React", icon: ReactLight },
-		{ name: "Next.js", icon: NextjsIconDark },
-		{ name: "Typescript", icon: Typescript },
-		{ name: "Node.js", icon: Nodejs },
-		{ name: "Python", icon: Python },
-		{ name: "Go", icon: Golang },
-		{ name: "Postgres", icon: Postgresql },
-		{ name: "Docker", icon: Docker },
-		{ name: "Kubernetes", icon: Kubernetes },
-		{ name: "Java", icon: Java },
-		{ name: "C++", icon: Csharp },
-	],
+	avatarUrl: "/images/2.png",
+
 	navbar: [
 		{ href: "/", icon: HomeIcon, label: "Home" },
 		{ href: "/blog", icon: NotebookIcon, label: "Blog" },
@@ -47,21 +35,21 @@ export const DATA = {
 		social: {
 			GitHub: {
 				name: "GitHub",
-				url: "https://dub.sh/dillion-github",
+				url: "https://github.com/laurentmwana",
 				icon: Icons.github,
 				navbar: true,
 			},
 
 			LinkedIn: {
 				name: "LinkedIn",
-				url: "https://dub.sh/dillion-linkedin",
+				url: "https://www.linkedin.com/in/laurentmwana",
 				icon: Icons.linkedin,
 
 				navbar: true,
 			},
 			X: {
 				name: "X",
-				url: "https://dub.sh/dillion-twitter",
+				url: "https://x.com/Labeya_",
 				icon: Icons.x,
 
 				navbar: true,
