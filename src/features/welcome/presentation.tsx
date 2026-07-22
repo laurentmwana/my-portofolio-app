@@ -12,12 +12,12 @@ export const Presentation = () => {
 				<div className="flex flex-col items-center gap-3 text-center md:items-start md:text-left">
 					<BlurFadeText
 						delay={BLUR_FADE_DELAY}
-						className="text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl"
+						className="text-xl font-semibold tracking-tight sm:text-2xl lg:text-3xl"
 						yOffset={8}
 						text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
 					/>
 					<BlurFadeText
-						className="max-w-[600px] text-muted-foreground md:text-lg lg:text-xl"
+						className="max-w-[600px] text-muted-foreground text-base lg:text-xl"
 						delay={BLUR_FADE_DELAY}
 						text={DATA.summary}
 					/>

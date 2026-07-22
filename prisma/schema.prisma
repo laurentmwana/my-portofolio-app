@@ -74,3 +74,17 @@ model Verification {
    @@index([identifier])
    @@map("verification")
 }
+
+model Skill {
+   id          String   @id @default(cuid())
+   name        String
+   slug        String   @unique
+   description String   @db.Text
+   iconKey     String?
+   isPublished Boolean  @default(false)
+   createdAt   DateTime @default(now())
+   updatedAt   DateTime @updatedAt
+
+   @@unique([name, iconKey])
+   @@map("skills")
+}

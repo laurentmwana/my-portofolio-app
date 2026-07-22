@@ -29,7 +29,7 @@ const mainItems: GroupNavItem[] = [
 				icon: Home,
 			},
 			{
-				href: "/about",
+				href: "/admin/about",
 				title: "À propos",
 				isShow: true,
 				icon: User,
@@ -42,13 +42,13 @@ const mainItems: GroupNavItem[] = [
 		isShow: true,
 		children: [
 			{
-				href: "/work-experience",
+				href: "/admin/work-experience",
 				title: "Work Experience",
 				isShow: true,
 				icon: Briefcase,
 			},
 			{
-				href: "/education",
+				href: "/admin/education",
 				title: "Education",
 				isShow: true,
 				icon: GraduationCap,
@@ -61,13 +61,13 @@ const mainItems: GroupNavItem[] = [
 		isShow: true,
 		children: [
 			{
-				href: "/projects",
+				href: "/admin/projects",
 				title: "Project",
 				isShow: true,
 				icon: FolderKanban,
 			},
 			{
-				href: "/skills",
+				href: "/admin/skills",
 				title: "Compétences",
 				isShow: true,
 				icon: Code2,
@@ -80,7 +80,7 @@ const mainItems: GroupNavItem[] = [
 		isShow: true,
 		children: [
 			{
-				href: "/contact",
+				href: "/admin/contact",
 				title: "Me contacter",
 				isShow: true,
 				icon: Mail,
@@ -98,17 +98,17 @@ const navUserItems: NavItem[] = [
 	{
 		title: "Work Experience",
 		icon: Briefcase,
-		href: "/work-experience",
+		href: "/admin/work-experience",
 	},
 	{
 		title: "Education",
 		icon: GraduationCap,
-		href: "/education",
+		href: "/admin/education",
 	},
 	{
 		title: "Project",
 		icon: FolderKanban,
-		href: "/projects",
+		href: "/admin/projects",
 	},
 	{
 		title: "Profil",

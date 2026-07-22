@@ -1,8 +1,10 @@
 import { prisma } from "#/lib/prisma";
 import { authSeeder } from "./seeders/auth.seeder";
+import { skillSeeder } from "./seeders/skill.seeder";
 
 async function main() {
    await authSeeder()
+   await skillSeeder()
 }
 
 main()

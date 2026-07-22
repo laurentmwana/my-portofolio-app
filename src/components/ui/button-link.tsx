@@ -4,20 +4,15 @@ import { Button } from "./button";
 
 type Props = ComponentProps<typeof Button> & { href?: string };
 
-export const ButtonLink: FC<Props> = ({
-	href = "#",
-	disabled,
-	children,
-	...props
-}) => {
+export const ButtonLink: FC<Props> = ({ href = "#", disabled, children }) => {
 	return (
 		<Button
-			{...props}
-			render={() => (
+			render={(props) => (
 				<Link
 					className={`${disabled ? "cursor-allowed" : "cursor-pointer"} `}
 					disabled={disabled}
 					to={href}
+					{...props}
 				>
 					{children}
 				</Link>

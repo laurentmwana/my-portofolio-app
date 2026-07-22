@@ -25,7 +25,7 @@ export const Route = createRootRoute({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "TanStack Start Starter",
+				title: "Labeya",
 			},
 		],
 		links: [
@@ -35,7 +35,7 @@ export const Route = createRootRoute({
 			},
 		],
 	}),
-	shellComponent: RootDocument,
+	shellComponent: Layout,
 
 	beforeLoad: async () => {
 		const session = await getSessionFn();
@@ -44,7 +44,7 @@ export const Route = createRootRoute({
 	},
 });
 
-function RootDocument() {
+function Layout() {
 	const queryClient = new QueryClient();
 	return (
 		<html lang="fr" suppressHydrationWarning>
