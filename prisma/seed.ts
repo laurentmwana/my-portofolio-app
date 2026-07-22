@@ -2,10 +2,6 @@ import { prisma } from "#/lib/prisma";
 import { auth } from "#/lib/auth";
 import { faker } from '@faker-js/faker';
 
-// ==========================================
-// DONNÉES
-// ==========================================
-
 const SKILLS = [
 	{ name: "React", slug: "react", icon: "REACT" },
 	{ name: "Next.js", slug: "nextjs", icon: "NEXTJS" },

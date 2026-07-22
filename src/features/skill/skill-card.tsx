@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import type { Skill } from "#/generated/prisma/client";
 import { excerpt } from "#/lib/string";
 import {
@@ -16,7 +15,7 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
 	return (
 		<HoverCard>
 			<HoverCardTrigger
-				delay={10}
+				delay={150}
 				closeDelay={100}
 				render={
 					<div className="cursor-pointer border hover:border-primary bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2">
@@ -24,17 +23,19 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
 							<SkillIcon className="size-4 rounded overflow-hidden object-contain" />
 						)}
 						<span className="text-foreground text-sm font-medium">
-							{skill.name}
+							{excerpt(skill.name, 40)}
 						</span>
 					</div>
 				}
 			/>
 			<HoverCardContent className="flex w-64 flex-col gap-0.5">
-				<div className="flex gap-2 mb-4">
+				<div className="flex items-center gap-2 mb-4">
 					{skill.iconKey && (
 						<SkillIcon className="size-4 rounded overflow-hidden object-contain" />
 					)}
-					{excerpt(skill.name, 100)}
+					<span className="text-sm font-medium text-foreground">
+						{excerpt(skill.name, 100)}
+					</span>
 				</div>
 				<p className="text-sm text-muted-foreground">{skill.description}</p>
 			</HoverCardContent>

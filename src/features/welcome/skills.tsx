@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { findLatestPublishedSkillsFn } from "#/actions/skill.action";
-import { SkillCard } from "../skill/skill-card";
+import { SkillCard } from "#/features/skill/skill-card";
+import { SkillCardSkeletonList } from "#/features/skill/skill-skeleton";
 
 export const Skills = () => {
 	const { data: skills, isPending } = useQuery({
@@ -9,16 +10,15 @@ export const Skills = () => {
 			await findLatestPublishedSkillsFn({ data: { limit: 10 } }),
 	});
 
-	if (isPending) return <div>Chargement...</div>;
-	if (!skills) return null;
-
 	return (
 		<div className="container">
 			<h3 className="text-xl lg:text-2xl font-semibold mb-4">Skills</h3>
 			<div className="flex flex-wrap gap-3">
-				{skills.map((skill) => (
-					<SkillCard key={skill.id} skill={skill} />
-				))}
+				{isPending ? (
+					<SkillCardSkeletonList count={10} />
+				) : (
+					skills?.map((skill) => <SkillCard key={skill.id} skill={skill} />)
+				)}
 			</div>
 		</div>
 	);
