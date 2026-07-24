@@ -13,9 +13,9 @@ export function AppSidebarTemplate({
 	return (
 		<AppSidebarShell variant="sidebar">
 			<AppSidebar navUserItems={navUserItems} mainNavItems={mainItems} />
-			<AppSidebarContent variant="sidebar" className="overflow-x-hidden">
+			<AppSidebarContent variant="sidebar">
 				<AppSidebarHeader breadcrumbs={breadcrumbs} />
-				{children}
+				<div className="px-4 pb-4 pt-3">{children}</div>
 			</AppSidebarContent>
 		</AppSidebarShell>
 	);

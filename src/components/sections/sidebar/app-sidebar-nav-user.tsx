@@ -28,7 +28,14 @@ export function AppSidebarNavUser({ navUserItems }: Props) {
 		return (
 			<SidebarMenu>
 				<SidebarMenuItem>
-					<Loader />
+					<div className="flex items-center gap-2">
+						<div className="relative flex size-8 items-center justify-center rounded-full bg-muted text-muted-foreground">
+							<Loader size={5} />
+						</div>
+						<div className="flex flex-col overflow-hidden">
+							<div className="flex h-6 items-center gap-2 rounded-sm px-2 outline-none transition-colors focus:bg-sidebar-accent focus:text-sidebar-accent-foreground"></div>
+						</div>
+					</div>
 				</SidebarMenuItem>
 			</SidebarMenu>
 		);
