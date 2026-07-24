@@ -57,7 +57,7 @@ export const ProfilePasswordForm: React.FC<Props> = ({
 	});
 
 	return (
-		<div className={cn("flex flex-col gap-6", className)}>
+		<div className={cn("w-full max-w-xl mx-auto border border-border/60 bg-card text-card-foreground rounded-2xl shadow-lg p-6 sm:p-8 ring-2 ring-border/5 transition-all duration-300 hover:shadow-xl", className)}>
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();
@@ -66,9 +66,10 @@ export const ProfilePasswordForm: React.FC<Props> = ({
 				}}
 				noValidate
 			>
-				<FieldGroup>
-					<div className="flex flex-col gap-2">
-						<h2 className="text-semibold text-2xl">Changer le mot de passe</h2>
+				<FieldGroup className="gap-6">
+					<div className="flex flex-col gap-1 pb-4 border-b border-border/50">
+						<h2 className="text-xl font-bold text-foreground">Mot de passe</h2>
+						<p className="text-xs text-muted-foreground font-light">Modifiez votre mot de passe pour sécuriser votre compte</p>
 					</div>
 
 					<form.Field name="currentPassword">
@@ -76,8 +77,8 @@ export const ProfilePasswordForm: React.FC<Props> = ({
 							const isInvalid =
 								field.state.meta.isTouched && !field.state.meta.isValid;
 							return (
-								<Field data-invalid={isInvalid}>
-									<FieldLabel htmlFor={field.name}>
+								<Field data-invalid={isInvalid} className="gap-1.5">
+									<FieldLabel htmlFor={field.name} className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
 										Mot de passe actuel
 									</FieldLabel>
 									<Input
@@ -91,9 +92,10 @@ export const ProfilePasswordForm: React.FC<Props> = ({
 										onBlur={field.handleBlur}
 										onChange={(e) => field.handleChange(e.target.value)}
 										disabled={isPending}
+										className="h-10 transition-all border-border/60 focus-visible:ring-primary/30"
 									/>
 									{isInvalid && (
-										<FieldError errors={field.state.meta.errors.slice(0, 1)} />
+										<FieldError errors={field.state.meta.errors.slice(0, 1)} className="text-xs mt-1" />
 									)}
 								</Field>
 							);
@@ -105,8 +107,8 @@ export const ProfilePasswordForm: React.FC<Props> = ({
 							const isInvalid =
 								field.state.meta.isTouched && !field.state.meta.isValid;
 							return (
-								<Field data-invalid={isInvalid}>
-									<FieldLabel htmlFor={field.name}>
+								<Field data-invalid={isInvalid} className="gap-1.5">
+									<FieldLabel htmlFor={field.name} className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
 										Nouveau mot de passe
 									</FieldLabel>
 									<Input
@@ -120,9 +122,10 @@ export const ProfilePasswordForm: React.FC<Props> = ({
 										onBlur={field.handleBlur}
 										onChange={(e) => field.handleChange(e.target.value)}
 										disabled={isPending}
+										className="h-10 transition-all border-border/60 focus-visible:ring-primary/30"
 									/>
 									{isInvalid && (
-										<FieldError errors={field.state.meta.errors.slice(0, 1)} />
+										<FieldError errors={field.state.meta.errors.slice(0, 1)} className="text-xs mt-1" />
 									)}
 								</Field>
 							);
@@ -134,8 +137,8 @@ export const ProfilePasswordForm: React.FC<Props> = ({
 							const isInvalid =
 								field.state.meta.isTouched && !field.state.meta.isValid;
 							return (
-								<Field data-invalid={isInvalid}>
-									<FieldLabel htmlFor={field.name}>
+								<Field data-invalid={isInvalid} className="gap-1.5">
+									<FieldLabel htmlFor={field.name} className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
 										Confirmer le mot de passe
 									</FieldLabel>
 									<Input
@@ -149,9 +152,10 @@ export const ProfilePasswordForm: React.FC<Props> = ({
 										onBlur={field.handleBlur}
 										onChange={(e) => field.handleChange(e.target.value)}
 										disabled={isPending}
+										className="h-10 transition-all border-border/60 focus-visible:ring-primary/30"
 									/>
 									{isInvalid && (
-										<FieldError errors={field.state.meta.errors.slice(0, 1)} />
+										<FieldError errors={field.state.meta.errors.slice(0, 1)} className="text-xs mt-1" />
 									)}
 								</Field>
 							);
@@ -159,12 +163,12 @@ export const ProfilePasswordForm: React.FC<Props> = ({
 					</form.Field>
 
 					{displayError && (
-						<Alert variant="destructive">
+						<Alert variant="destructive" className="py-2.5 rounded-lg text-xs bg-destructive/5 border-destructive">
 							<AlertDescription>{displayError}</AlertDescription>
 						</Alert>
 					)}
 
-					<Field>
+					<Field className="pt-2">
 						<form.Subscribe
 							selector={(state) => [state.canSubmit, state.isSubmitting]}
 						>
@@ -174,9 +178,10 @@ export const ProfilePasswordForm: React.FC<Props> = ({
 										loader={isSubmitting || isPending}
 										type="submit"
 										disabled={!canSubmit || isPending}
+										className="h-10 font-medium tracking-wide shadow-sm hover:shadow transition-all px-6 cursor-pointer"
 									>
 										{isSubmitting || isPending
-											? "Mise à jour…"
+											? "Mise à jour en cours…"
 											: "Mettre à jour le mot de passe"}
 									</ButtonLoader>
 								</div>

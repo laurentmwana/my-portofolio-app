@@ -11,15 +11,17 @@ export const Works = () => {
 	});
 
 	return (
-		<div className="container">
-			<h3 className="text-xl lg:text-2xl font-semibold mb-4">Expérience</h3>
-			<div className="flex flex-col gap-3">
+		<section>
+			<h3 className="text-2xl lg:text-3xl font-extrabold tracking-tight mb-8 bg-linear-to-r from-foreground to-foreground/75 bg-clip-text text-transparent">
+				Expérience professionnelle
+			</h3>
+			<div className="flex flex-col gap-4">
 				{isPending ? (
 					<WorkCardSkeletonList count={4} />
 				) : (
 					works?.map((work) => <WorkCard key={work.id} work={work} />)
 				)}
 			</div>
-		</div>
+		</section>
 	);
 };

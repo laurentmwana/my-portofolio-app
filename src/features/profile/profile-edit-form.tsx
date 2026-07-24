@@ -51,7 +51,7 @@ export const ProfileEditForm: React.FC<Props> = ({
 	});
 
 	return (
-		<div className={cn("flex flex-col gap-6", className)}>
+		<div className={cn("w-full max-w-xl mx-auto border border-border/60 bg-card text-card-foreground rounded-2xl shadow-lg p-6 sm:p-8 ring-2 ring-border/5 transition-all duration-300 hover:shadow-xl", className)}>
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();
@@ -60,14 +60,19 @@ export const ProfileEditForm: React.FC<Props> = ({
 				}}
 				noValidate
 			>
-				<FieldGroup>
+				<FieldGroup className="gap-6">
+					<div className="flex flex-col gap-1 pb-4 border-b border-border/50">
+						<h2 className="text-xl font-bold text-foreground">Informations du profil</h2>
+						<p className="text-xs text-muted-foreground font-light">Mettez à jour vos informations personnelles publiques</p>
+					</div>
+
 					<form.Field name="name">
 						{(field) => {
 							const isInvalid =
 								field.state.meta.isTouched && !field.state.meta.isValid;
 							return (
-								<Field data-invalid={isInvalid}>
-									<FieldLabel htmlFor={field.name}>Nom</FieldLabel>
+								<Field data-invalid={isInvalid} className="gap-1.5">
+									<FieldLabel htmlFor={field.name} className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Nom</FieldLabel>
 									<Input
 										id={field.name}
 										name={field.name}
@@ -79,9 +84,10 @@ export const ProfileEditForm: React.FC<Props> = ({
 										onBlur={field.handleBlur}
 										onChange={(e) => field.handleChange(e.target.value)}
 										disabled={isPending}
+										className="h-10 transition-all border-border/60 focus-visible:ring-primary/30"
 									/>
 									{isInvalid && (
-										<FieldError errors={field.state.meta.errors.slice(0, 1)} />
+										<FieldError errors={field.state.meta.errors.slice(0, 1)} className="text-xs mt-1" />
 									)}
 								</Field>
 							);
@@ -93,8 +99,8 @@ export const ProfileEditForm: React.FC<Props> = ({
 							const isInvalid =
 								field.state.meta.isTouched && !field.state.meta.isValid;
 							return (
-								<Field data-invalid={isInvalid}>
-									<FieldLabel htmlFor={field.name}>Email</FieldLabel>
+								<Field data-invalid={isInvalid} className="gap-1.5">
+									<FieldLabel htmlFor={field.name} className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email</FieldLabel>
 									<Input
 										id={field.name}
 										name={field.name}
@@ -106,9 +112,10 @@ export const ProfileEditForm: React.FC<Props> = ({
 										onBlur={field.handleBlur}
 										onChange={(e) => field.handleChange(e.target.value)}
 										disabled={isPending}
+										className="h-10 transition-all border-border/60 focus-visible:ring-primary/30"
 									/>
 									{isInvalid && (
-										<FieldError errors={field.state.meta.errors.slice(0, 1)} />
+										<FieldError errors={field.state.meta.errors.slice(0, 1)} className="text-xs mt-1" />
 									)}
 								</Field>
 							);
@@ -116,12 +123,12 @@ export const ProfileEditForm: React.FC<Props> = ({
 					</form.Field>
 
 					{displayError && (
-						<Alert variant="destructive">
+						<Alert variant="destructive" className="py-2.5 rounded-lg text-xs bg-destructive/5 border-destructive">
 							<AlertDescription>{displayError}</AlertDescription>
 						</Alert>
 					)}
 
-					<Field>
+					<Field className="pt-2">
 						<form.Subscribe
 							selector={(state) => [state.canSubmit, state.isSubmitting]}
 						>
@@ -131,10 +138,11 @@ export const ProfileEditForm: React.FC<Props> = ({
 										loader={isSubmitting || isPending}
 										type="submit"
 										disabled={!canSubmit || isPending}
+										className="h-10 font-medium tracking-wide shadow-sm hover:shadow transition-all px-6 cursor-pointer"
 									>
 										{isSubmitting || isPending
-											? "Enregistrement…"
-											: "Enregistrer"}
+											? "Enregistrement en cours…"
+											: "Enregistrer les modifications"}
 									</ButtonLoader>
 								</div>
 							)}
