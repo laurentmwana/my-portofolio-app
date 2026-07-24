@@ -1,32 +1,21 @@
 import { HomeIcon, NotebookIcon } from "lucide-react";
 import { Icons } from "#/components/icons";
-import { Csharp } from "@/components/ui/svgs/csharp";
-import { Docker } from "@/components/ui/svgs/docker";
-import { Golang } from "@/components/ui/svgs/golang";
-import { Java } from "@/components/ui/svgs/java";
-import { Kubernetes } from "@/components/ui/svgs/kubernetes";
-import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
-import { Nodejs } from "@/components/ui/svgs/nodejs";
-import { Postgresql } from "@/components/ui/svgs/postgresql";
-import { Python } from "@/components/ui/svgs/python";
-import { ReactLight } from "@/components/ui/svgs/reactLight";
-import { Typescript } from "@/components/ui/svgs/typescript";
 
 export const DATA = {
 	name: "Laurent Mwana",
 	initials: "LM",
 	url: null,
-	location: "DRC, Kinshasa",
+	location: "RDC, Kinshasa",
 	locationLink:
 		"https://www.google.com/maps/place/kinshasa/@-4.325,15.322,12z/data=!3m1!4b1!4m6!3m5!1s0x1a6a2e7f8c9d8f7f:0x1a6a2e7f8c9d8f7f!8m2!3d-4.325!4d15.322!16zL20vMDJwZ3A?entry=ttu",
 	description:
-		"I am a software engineer and entrepreneur with a passion for building innovative products. I have experience in full-stack development, cloud computing, and product management. I am currently focused on building and scaling my own SaaS businesses.",
+		"Je suis ingénieur logiciel et entrepreneur, passionné par la création de produits innovants. J'ai de l'expérience en développement full-stack, en cloud computing et en gestion de produits. Je me concentre actuellement sur la création et le développement de mes propres entreprises SaaS.",
 	summary:
-		"I am a software engineer and entrepreneur with a passion for building innovative products. I have experience in full-stack development, cloud computing, and product management. I am currently focused on building and scaling my own SaaS businesses.",
+		"Je suis ingénieur logiciel et entrepreneur, passionné par la création de produits innovants. J'ai de l'expérience en développement full-stack, en cloud computing et en gestion de produits. Je me concentre actuellement sur la création et le développement de mes propres entreprises SaaS.",
 	avatarUrl: "/images/2.png",
 
 	navbar: [
-		{ href: "/", icon: HomeIcon, label: "Home" },
+		{ href: "/", icon: HomeIcon, label: "Accueil" },
 		{ href: "/blog", icon: NotebookIcon, label: "Blog" },
 	],
 	contact: {
@@ -61,7 +50,7 @@ export const DATA = {
 				navbar: true,
 			},
 			email: {
-				name: "Send Email",
+				name: "Envoyer un e-mail",
 				url: "#",
 				icon: Icons.email,
 
@@ -75,73 +64,73 @@ export const DATA = {
 			company: "Atomic Finance",
 			href: "https://atomic.finance",
 			badges: [],
-			location: "Remote",
-			title: "Bitcoin Protocol Engineer",
+			location: "À distance",
+			title: "Ingénieur Protocole Bitcoin",
 			logoUrl: "/atomic.png",
-			start: "May 2021",
+			start: "Mai 2021",
 			end: "Oct 2022",
 			description:
-				"Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
+				"Implémentation des spécifications du protocole discret log contract (DLC) de Bitcoin sous forme de SDK TypeScript open source. Dockerisation de tous les microservices et configuration d'un cluster Kubernetes de production. Conception d'un data lake avec AWS S3 et Athena pour le backtesting historique de stratégies de trading de Bitcoin. Création d'une application mobile en React Native et TypeScript.",
 		},
 		{
 			company: "Shopify",
 			badges: [],
 			href: "https://shopify.com",
-			location: "Remote",
-			title: "Software Engineer",
+			location: "À distance",
+			title: "Ingénieur Logiciel",
 			logoUrl: "/shopify.svg",
-			start: "January 2021",
-			end: "April 2021",
+			start: "Janvier 2021",
+			end: "Avril 2021",
 			description:
-				"Implemented a custom Kubernetes controller in Go to automate the deployment of MySQL and ProxySQL custom resources in order to enable 2,000+ internal developers to instantly deploy their app databases to production. Wrote several scripts in Go to automate MySQL database failovers while maintaining master-slave replication topologies and keeping Zookeeper nodes consistent with changes.",
+				"Implémentation d'un contrôleur Kubernetes personnalisé en Go pour automatiser le déploiement de ressources personnalisées MySQL et ProxySQL afin de permettre à plus de 2000 développeurs internes de déployer instantanément leurs bases de données applicatives en production. Écriture de plusieurs scripts en Go pour automatiser les basculements (failover) de bases de données MySQL tout en maintenant les topologies de réplication maître-esclave et en gardant les nœuds Zookeeper cohérents.",
 		},
 		{
 			company: "Nvidia",
 			href: "https://nvidia.com/",
 			badges: [],
 			location: "Santa Clara, CA",
-			title: "Software Engineer",
+			title: "Ingénieur Logiciel",
 			logoUrl: "/nvidia.png",
-			start: "January 2020",
-			end: "April 2020",
+			start: "Janvier 2020",
+			end: "Avril 2020",
 			description:
-				"Architected and wrote the entire MVP of the GeForce Now Cloud Gaming internal admin and A/B testing dashboard using React, Redux, TypeScript, and Python.",
+				"Conception et développement de l'intégralité du MVP du tableau de bord interne d'administration et de tests A/B de GeForce Now Cloud Gaming en utilisant React, Redux, TypeScript et Python.",
 		},
 		{
 			company: "Splunk",
 			href: "https://splunk.com",
 			badges: [],
 			location: "San Jose, CA",
-			title: "Software Engineer",
+			title: "Ingénieur Logiciel",
 			logoUrl: "/splunk.svg",
-			start: "January 2019",
-			end: "April 2019",
+			start: "Janvier 2019",
+			end: "Avril 2019",
 			description:
-				"Co-developed a prototype iOS app with another intern in Swift for the new Splunk Phantom security orchestration product (later publicly demoed and launched at .conf annual conference in Las Vegas). Implemented a realtime service for the iOS app in Django (Python) and C++; serialized data using protobufs transmitted over gRPC resulting in an approximate 500% increase in data throughput.",
+				"Co-développement en Swift d'un prototype d'application iOS avec un autre stagiaire pour le nouveau produit d'orchestration de sécurité Splunk Phantom (présenté publiquement et lancé lors de la conférence annuelle .conf à Las Vegas). Implémentation d'un service en temps réel pour l'application iOS en Django (Python) et C++ ; sérialisation des données avec protobufs transmises via gRPC, entraînant une hausse d'environ 500 % du débit de données.",
 		},
 		{
 			company: "Lime",
 			href: "https://li.me/",
 			badges: [],
 			location: "San Francisco, CA",
-			title: "Software Engineer",
+			title: "Ingénieur Logiciel",
 			logoUrl: "/lime.svg",
-			start: "January 2018",
-			end: "April 2018",
+			start: "Janvier 2018",
+			end: "Avril 2018",
 			description:
-				"Proposed and implemented an internal ruby API for sending/receiving commands to scooters over LTE networks. Developed a fully automated bike firmware update system to handle asynchronous firmware updates of over 100,000+ scooters worldwide, and provide progress reports in real-time using React, Ruby on Rails, PostgreSQL and AWS EC2 saving hundreds of developer hours.",
+				"Proposition et implémentation d'une API Ruby interne pour l'envoi et la réception de commandes aux trottinettes via les réseaux LTE. Développement d'un système de mise à jour entièrement automatisé du firmware pour gérer les mises à jour asynchrones de plus de 100 000 trottinettes dans le monde, et fournir des rapports de progression en temps réel avec React, Ruby on Rails, PostgreSQL et AWS EC2, économisant ainsi des centaines d'heures de développement.",
 		},
 		{
 			company: "Mitre Media",
 			href: "https://mitremedia.com/",
 			badges: [],
 			location: "Toronto, ON",
-			title: "Software Engineer",
+			title: "Ingénieur Logiciel",
 			logoUrl: "/mitremedia.png",
-			start: "May 2017",
-			end: "August 2017",
+			start: "Mai 2017",
+			end: "Août 2017",
 			description:
-				"Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener",
+				"Conception et implémentation d'un système robuste de chiffrement des mots de passe et de stockage des cookies de navigation sous Ruby on Rails. Utilisation de l'API Yahoo Finance pour développer le filtre d'actions (equity screener) de dividend.com.",
 		},
 	],
 	education: [
@@ -154,25 +143,25 @@ export const DATA = {
 			end: "2024",
 		},
 		{
-			school: "University of Waterloo",
+			school: "Université de Waterloo",
 			href: "https://uwaterloo.ca",
-			degree: "Bachelor's Degree of Computer Science (BCS)",
+			degree: "Licence en Informatique (BCS)",
 			logoUrl: "/waterloo.png",
 			start: "2016",
 			end: "2021",
 		},
 		{
-			school: "Wilfrid Laurier University",
+			school: "Université Wilfrid Laurier",
 			href: "https://wlu.ca",
-			degree: "Bachelor's Degree of Business Administration (BBA)",
+			degree: "Licence en Administration des Affaires (BBA)",
 			logoUrl: "/laurier.png",
 			start: "2016",
 			end: "2021",
 		},
 		{
-			school: "International Baccalaureate",
+			school: "Baccalauréat International",
 			href: "https://ibo.org",
-			degree: "IB Diploma",
+			degree: "Diplôme du Baccalauréat International",
 			logoUrl: "/ib.png",
 			start: "2012",
 			end: "2016",
@@ -182,10 +171,10 @@ export const DATA = {
 		{
 			title: "Chat Collect",
 			href: "https://chatcollect.com",
-			dates: "Jan 2024 - Feb 2024",
+			dates: "Janv 2024 - Fév 2024",
 			active: true,
 			description:
-				"With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+				"Avec la sortie de l'[OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), j'ai décidé de créer un SaaS permettant aux utilisateurs de collecter les adresses e-mail de leurs utilisateurs de GPT. C'est un excellent moyen de se constituer une audience et de monétiser l'utilisation de l'API GPT.",
 			technologies: [
 				"Next.js",
 				"Typescript",
@@ -210,10 +199,10 @@ export const DATA = {
 		{
 			title: "Magic UI",
 			href: "https://magicui.design",
-			dates: "June 2023 - Present",
+			dates: "Juin 2023 - Présent",
 			active: true,
 			description:
-				"Designed, developed and sold animated UI components for developers.",
+				"Conception, développement et vente de composants d'interface animés pour les développeurs.",
 			technologies: [
 				"Next.js",
 				"Typescript",
@@ -242,10 +231,10 @@ export const DATA = {
 		{
 			title: "llm.report",
 			href: "https://llm.report",
-			dates: "April 2023 - September 2023",
+			dates: "Avril 2023 - Septembre 2023",
 			active: true,
 			description:
-				"Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
+				"Développement d'une plateforme open source de journalisation et d'analyse pour OpenAI : enregistrez vos requêtes d'API ChatGPT, analysez les coûts et améliorez vos prompts.",
 			technologies: [
 				"Next.js",
 				"Typescript",
@@ -275,10 +264,10 @@ export const DATA = {
 		{
 			title: "Automatic Chat",
 			href: "https://automatic.chat",
-			dates: "April 2023 - March 2024",
+			dates: "Avril 2023 - Mars 2024",
 			active: true,
 			description:
-				"Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
+				"Développement d'un chatbot de support client basé sur l'IA qui répond automatiquement aux tickets de support en utilisant les derniers modèles GPT.",
 			technologies: [
 				"Next.js",
 				"Typescript",
@@ -305,10 +294,10 @@ export const DATA = {
 	hackathons: [
 		{
 			title: "Hack Western 5",
-			dates: "November 23rd - 25th, 2018",
+			dates: "23 - 25 Novembre 2018",
 			location: "London, Ontario",
 			description:
-				"Developed a mobile application which delivered bedtime stories to children using augmented reality.",
+				"Développement d'une application mobile diffusant des histoires du soir pour enfants grâce à la réalité augmentée.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-western.png",
 			mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
@@ -316,10 +305,10 @@ export const DATA = {
 		},
 		{
 			title: "Hack The North",
-			dates: "September 14th - 16th, 2018",
+			dates: "14 - 16 Septembre 2018",
 			location: "Waterloo, Ontario",
 			description:
-				"Developed a mobile application which delivers university campus wide events in real time to all students.",
+				"Développement d'une application mobile qui diffuse en temps réel les événements du campus universitaire à tous les étudiants.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-the-north.png",
 			mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
@@ -327,10 +316,10 @@ export const DATA = {
 		},
 		{
 			title: "FirstNet Public Safety Hackathon",
-			dates: "March 23rd - 24th, 2018",
-			location: "San Francisco, California",
+			dates: "23 - 24 Mars 2018",
+			location: "San Francisco, Californie",
 			description:
-				"Developed a mobile application which communcicates a victims medical data from inside an ambulance to doctors at hospital.",
+				"Développement d'une application mobile transmettant les données médicales d'une victime depuis l'ambulance aux médecins de l'hôpital.",
 			icon: "public",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/firstnet.png",
@@ -338,10 +327,10 @@ export const DATA = {
 		},
 		{
 			title: "DeveloperWeek Hackathon",
-			dates: "February 3rd - 4th, 2018",
-			location: "San Francisco, California",
+			dates: "3 - 4 Février 2018",
+			location: "San Francisco, Californie",
 			description:
-				"Developed a web application which aggregates social media data regarding cryptocurrencies and predicts future prices.",
+				"Développement d'une application web agrégeant les données des réseaux sociaux sur les cryptomonnaies pour prédire les prix futurs.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/developer-week.jpg",
 			links: [
@@ -354,10 +343,10 @@ export const DATA = {
 		},
 		{
 			title: "HackDavis",
-			dates: "January 20th - 21st, 2018",
-			location: "Davis, California",
+			dates: "20 - 21 Janvier 2018",
+			location: "Davis, Californie",
 			description:
-				"Developed a mobile application which allocates a daily carbon emission allowance to users to move towards a sustainable environment.",
+				"Développement d'une application mobile attribuant un quota quotidien d'émissions de carbone aux utilisateurs afin de favoriser un environnement durable.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-davis.png",
 			win: "Best Data Hack",
@@ -387,10 +376,10 @@ export const DATA = {
 		},
 		{
 			title: "ETH Waterloo",
-			dates: "October 13th - 15th, 2017",
+			dates: "13 - 15 Octobre 2017",
 			location: "Waterloo, Ontario",
 			description:
-				"Developed a blockchain application for doctors and pharmacists to perform trustless transactions and prevent overdosage in patients.",
+				"Développement d'une application blockchain permettant aux médecins et pharmaciens d'effectuer des transactions sécurisées et d'éviter les surdosages chez les patients.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/eth-waterloo.png",
 			links: [
@@ -403,10 +392,10 @@ export const DATA = {
 		},
 		{
 			title: "Hack The North",
-			dates: "September 15th - 17th, 2017",
+			dates: "15 - 17 Septembre 2017",
 			location: "Waterloo, Ontario",
 			description:
-				"Developed a virtual reality application allowing users to see themselves in third person.",
+				"Développement d'une application de réalité virtuelle permettant aux utilisateurs de s'observer à la troisième personne.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-the-north.png",
 			mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg",
@@ -425,10 +414,10 @@ export const DATA = {
 		},
 		{
 			title: "Hack The 6ix",
-			dates: "August 26th - 27th, 2017",
+			dates: "26 - 27 Août 2017",
 			location: "Toronto, Ontario",
 			description:
-				"Developed an open platform for people shipping items to same place to combine shipping costs and save money.",
+				"Développement d'une plateforme ouverte permettant aux personnes expédiant des colis vers un même endroit de regrouper leurs frais d'envoi.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-the-6ix.jpg",
 			mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg",
@@ -447,10 +436,10 @@ export const DATA = {
 		},
 		{
 			title: "Stupid Hack Toronto",
-			dates: "July 23rd, 2017",
+			dates: "23 Juillet 2017",
 			location: "Toronto, Ontario",
 			description:
-				"Developed a chrome extension which tracks which facebook profiles you have visited and immediately texts your girlfriend if you visited another girls page.",
+				"Développement d'une extension Chrome qui enregistre les profils Facebook visités et envoie immédiatement un SMS à votre petite amie si vous visitez la page d'une autre fille.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/stupid-hackathon.png",
 			links: [
@@ -463,10 +452,10 @@ export const DATA = {
 		},
 		{
 			title: "Global AI Hackathon - Toronto",
-			dates: "June 23rd - 25th, 2017",
+			dates: "23 - 25 Juin 2017",
 			location: "Toronto, Ontario",
 			description:
-				"Developed a python library which can be imported to any python game and change difficulty of the game based on real time emotion of player. Uses OpenCV and webcam for facial recognition, and a custom Machine Learning Model trained on a [Kaggle Emotion Dataset](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/leaderboard) using [Tensorflow](https://www.tensorflow.org/Tensorflow) and [Keras](https://keras.io/). This project recieved 1st place prize at the Global AI Hackathon - Toronto and was also invited to demo at [NextAI Canada](https://www.nextcanada.com/next-ai).",
+				"Développement d'une bibliothèque Python intégrable à n'importe quel jeu Python, ajustant la difficulté en fonction des émotions du joueur en temps réel. Utilise OpenCV et une webcam pour la reconnaissance faciale, ainsi qu'un modèle d'apprentissage automatique personnalisé entraîné sur un jeu de données d'émotions de Kaggle via TensorFlow et Keras. Ce projet a remporté le 1er prix au Global AI Hackathon de Toronto et a été présenté chez NextAI Canada.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/global-ai-hackathon.jpg",
 			win: "1st Place Winner",
@@ -485,20 +474,20 @@ export const DATA = {
 		},
 		{
 			title: "McGill AI for Social Innovation Hackathon",
-			dates: "June 17th - 18th, 2017",
-			location: "Montreal, Quebec",
+			dates: "17 - 18 Juin 2017",
+			location: "Montréal, Québec",
 			description:
-				"Developed realtime facial microexpression analyzer using AI",
+				"Développement d'un analyseur de micro-expressions faciales en temps réel basé sur l'IA.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/ai-for-social-good.jpg",
 			links: [],
 		},
 		{
 			title: "Open Source Circular Economy Days Hackathon",
-			dates: "June 10th, 2017",
+			dates: "10 Juin 2017",
 			location: "Toronto, Ontario",
 			description:
-				"Developed a custom admin interface for food waste startup <a href='http://genecis.co/'>Genecis</a> to manage their data and provide analytics.",
+				"Développement d'une interface d'administration personnalisée pour la start-up de valorisation des déchets alimentaires Genecis afin de gérer leurs données et fournir des analyses.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/open-source-circular-economy-days.jpg",
 			win: "1st Place Winner",
@@ -512,9 +501,10 @@ export const DATA = {
 		},
 		{
 			title: "Make School's Student App Competition 2017",
-			dates: "May 19th - 21st, 2017",
+			dates: "19 - 21 Mai 2017",
 			location: "International",
-			description: "Improved PocketDoc and submitted to online competition",
+			description:
+				"Amélioration de PocketDoc et soumission à un concours en ligne.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/make-school-hackathon.png",
 			win: "Top 10 Finalist | Honourable Mention",
@@ -543,19 +533,20 @@ export const DATA = {
 		},
 		{
 			title: "HackMining",
-			dates: "May 12th - 14th, 2017",
+			dates: "12 - 14 Mai 2017",
 			location: "Toronto, Ontario",
-			description: "Developed neural network to optimize a mining process",
+			description:
+				"Développement d'un réseau de neurones pour optimiser un processus d'exploitation minière.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-mining.png",
 			links: [],
 		},
 		{
 			title: "Waterloo Equithon",
-			dates: "May 5th - 7th, 2017",
+			dates: "5 - 7 Mai 2017",
 			location: "Waterloo, Ontario",
 			description:
-				"Developed Pocketdoc, an app in which you take a picture of a physical wound, and the app returns common solutions or cures to the injuries or diseases.",
+				"Développement de Pocketdoc, une application où l'on prend en photo une plaie physique pour obtenir des solutions ou traitements courants aux blessures ou maladies.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/waterloo-equithon.png",
 			links: [
@@ -578,10 +569,10 @@ export const DATA = {
 		},
 		{
 			title: "SpaceApps Waterloo",
-			dates: "April 28th - 30th, 2017",
+			dates: "28 - 30 Avril 2017",
 			location: "Waterloo, Ontario",
 			description:
-				"Developed Earthwatch, a web application which allows users in a plane to virtually see important points of interest about the world below them. They can even choose to fly away from their route and then fly back if they choose. Special thanks to CesiumJS for providing open source world and plane models.",
+				"Développement d'Earthwatch, une application web permettant aux passagers d'un avion de visualiser virtuellement les points d'intérêt du monde situé sous leurs pieds. Remerciements particuliers à CesiumJS pour les modèles ouverts de globe terrestre et d'avion.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/space-apps.png",
 			links: [
@@ -594,10 +585,10 @@ export const DATA = {
 		},
 		{
 			title: "MHacks 9",
-			dates: "March 24th - 26th, 2017",
+			dates: "24 - 26 Mars 2017",
 			location: "Ann Arbor, Michigan",
 			description:
-				"Developed Super Graphic Air Traffic, a VR website made to introduce people to the world of air traffic controlling. This project was built completely using THREE.js as well as a node backend server.",
+				"Développement de Super Graphic Air Traffic, un site web en VR destiné à faire découvrir l'univers du contrôle aérien. Ce projet a été développé entièrement avec THREE.js et un serveur dorsal Node.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/mhacks-9.png",
 			mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg",
@@ -611,10 +602,10 @@ export const DATA = {
 		},
 		{
 			title: "StartHacks I",
-			dates: "March 4th - 5th, 2017",
+			dates: "4 - 5 Mars 2017",
 			location: "Waterloo, Ontario",
 			description:
-				"Developed at StartHacks 2017, Recipic is a mobile app which allows you to take pictures of ingredients around your house, and it will recognize those ingredients using ClarifAI image recognition API and return possible recipes to make. Recipic recieved 1st place at the hackathon for best pitch and hack.",
+				"Développé lors du StartHacks 2017, Recipic is a mobile app which allows you to take pictures of ingredients around your house, and it will recognize those ingredients using ClarifAI image recognition API and return possible recipes to make. Recipic recieved 1st place at the hackathon for best pitch and hack.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/starthacks.png",
 			win: "1st Place Winner",
@@ -634,10 +625,10 @@ export const DATA = {
 		},
 		{
 			title: "QHacks II",
-			dates: "February 3rd - 5th, 2017",
+			dates: "3 - 5 Février 2017",
 			location: "Kingston, Ontario",
 			description:
-				"Developed a mobile game which enables city-wide manhunt with random lobbies",
+				"Développement d'un jeu mobile permettant une chasse à l'homme à l'échelle de la ville avec des salons de joueurs aléatoires.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/qhacks.png",
 			mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg",
@@ -656,10 +647,10 @@ export const DATA = {
 		},
 		{
 			title: "Terrible Hacks V",
-			dates: "November 26th, 2016",
+			dates: "26 Novembre 2016",
 			location: "Waterloo, Ontario",
 			description:
-				"Developed a mock of Windows 11 with interesting notifications and functionality",
+				"Développement d'une simulation de Windows 11 avec des notifications et fonctionnalités amusantes.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/terrible-hacks-v.png",
 			links: [
@@ -672,10 +663,10 @@ export const DATA = {
 		},
 		{
 			title: "Portal Hackathon",
-			dates: "October 29, 2016",
+			dates: "29 Octobre 2016",
 			location: "Kingston, Ontario",
 			description:
-				"Developed an internal widget for uploading assignments using Waterloo's portal app",
+				"Développement d'un widget interne pour téléverser des devoirs en utilisant l'application portail de l'Université de Waterloo.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/portal-hackathon.png",
 			links: [

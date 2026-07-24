@@ -16,42 +16,42 @@ const linkIcon = (icon: string | null) => {
 
 export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
 	return (
-		<div className="flex flex-col gap-4">
+		<div className="flex flex-col gap-5 p-2">
 			{project.image && (
-				<img
-					src={project.image}
-					alt={project.title}
-					className="h-48 w-full object-cover rounded-lg border border-border"
-				/>
+				<div className="h-52 w-full overflow-hidden rounded-xl border border-border shadow-sm">
+					<img
+						src={project.image}
+						alt={project.title}
+						className="h-full w-full object-cover transition-transform duration-500 hover:scale-102"
+					/>
+				</div>
 			)}
 
-			<div className="flex items-start justify-between gap-2">
-				<div className="flex flex-col">
-					<h3 className="text-base font-semibold text-foreground">
-						{project.title}
-					</h3>
-					<span className="text-xs text-muted-foreground">
-						{formatDateRange(project.start, project.end)}
-					</span>
-				</div>
+			<div className="flex flex-col gap-1 pb-3 border-b border-border/50">
+				<h3 className="text-lg font-bold text-foreground">
+					{project.title}
+				</h3>
+				<span className="text-xs text-muted-foreground font-light">
+					{formatDateRange(project.start, project.end)}
+				</span>
 			</div>
 
 			{project.technologies.length > 0 && (
-				<div className="flex flex-wrap gap-1.5">
+				<div className="flex flex-wrap gap-1.5 pt-1">
 					{project.technologies.map((tech) => (
-						<Badge key={tech} variant="outline">
+						<Badge key={tech} variant="outline" className="text-xs hover:bg-accent transition-colors">
 							{tech}
 						</Badge>
 					))}
 				</div>
 			)}
 
-			<p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+			<p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line font-light">
 				{project.description}
 			</p>
 
 			{project.links.length > 0 && (
-				<div className="flex items-center gap-2">
+				<div className="flex flex-wrap items-center gap-2 pt-2 border-t border-border/50">
 					{project.links.map((link) => {
 						const Icon = linkIcon(link.icon);
 						return (
@@ -60,10 +60,10 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
 								href={link.href}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="border border-border text-muted-foreground hover:border-primary hover:text-foreground flex items-center gap-1.5 rounded-md px-3 h-8 text-xs transition-colors"
+								className="border border-border text-muted-foreground hover:border-primary hover:text-primary-foreground hover:bg-primary flex items-center gap-1.5 rounded-lg px-3 h-9 text-xs transition-all duration-200 hover:-translate-y-0.5"
 							>
 								<Icon className="size-3.5" />
-								{link.type}
+								<span className="capitalize">{link.type}</span>
 							</a>
 						);
 					})}

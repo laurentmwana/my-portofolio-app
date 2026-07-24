@@ -10,13 +10,15 @@ export const Route = createFileRoute("/_portofolio/")({ component: Page });
 
 function Page() {
 	return (
-		<div>
-			<Presentation />
-			<Works />
-			<Educations />
-			<Skills />
-			<Projects />
-			<Hackathons />
+		<div className="container py-12 sm:py-16 md:py-20 lg:py-24">
+			<div className="flex flex-col gap-16">
+				<Presentation />
+				<Works />
+				<Educations />
+				<Skills />
+				<Projects />
+				<Hackathons />
+			</div>
 		</div>
 	);
 }

@@ -12,9 +12,11 @@ export const Educations = () => {
 	});
 
 	return (
-		<div className="container">
-			<h3 className="text-xl lg:text-2xl font-semibold mb-4">Formation</h3>
-			<div className="flex flex-col gap-3">
+		<section>
+			<h3 className="text-2xl lg:text-3xl font-extrabold tracking-tight mb-8 bg-linear-to-r from-foreground to-foreground/75 bg-clip-text text-transparent">
+				Formation & Études
+			</h3>
+			<div className="flex flex-col gap-4">
 				{isPending ? (
 					<EducationCardSkeletonList count={3} />
 				) : (
@@ -23,6 +25,6 @@ export const Educations = () => {
 					))
 				)}
 			</div>
-		</div>
+		</section>
 	);
 };

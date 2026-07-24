@@ -12,17 +12,19 @@ export const Projects = () => {
 	});
 
 	return (
-		<div className="container">
-			<h3 className="text-xl lg:text-2xl font-semibold mb-4">Projets</h3>
+		<section>
+			<h3 className="text-2xl lg:text-3xl font-extrabold tracking-tight mb-8 bg-linear-to-r from-foreground to-foreground/75 bg-clip-text text-transparent">
+				Projets phares
+			</h3>
 			{isPending ? (
 				<ProjectCardSkeletonList count={4} />
 			) : (
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					{projects?.map((project) => (
 						<ProjectCard key={project.id} project={project} />
 					))}
 				</div>
 			)}
-		</div>
+		</section>
 	);
 };

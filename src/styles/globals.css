@@ -172,7 +172,7 @@
 }
 
 .container {
-      @apply relative z-10 max-w-5xl mx-auto py-12 sm:py-24 px-6;
+      @apply relative z-10 max-w-5xl mx-auto py-10 sm:py-12 px-6;
 }
 
 .container-sm {
