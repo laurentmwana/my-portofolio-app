@@ -1,3 +1,4 @@
+import { ButtonLink } from "#/components/ui/button-link";
 import type { Work } from "#/generated/prisma/client";
 import { formatDateRange } from "#/lib/format-date";
 import { excerpt } from "#/lib/string";
@@ -35,6 +36,12 @@ export const WorkCard = ({ work }: WorkCardProps) => {
 						{excerpt(work.description, 160)}
 					</p>
 				)}
+
+				<div className="mt-5">
+					<ButtonLink href={`/works/${work.id}`} variant="outline" size="sm">
+						Voir plus
+					</ButtonLink>
+				</div>
 			</div>
 		</div>
 	);

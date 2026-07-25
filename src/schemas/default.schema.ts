@@ -50,7 +50,7 @@ export const queriesSchema = z.object({
 });
 
 export const idSchema = z.object({
-	redirect: z.string(),
+	id: z.string(),
 });
 
 export const paginationQuerySchema = z.object({
