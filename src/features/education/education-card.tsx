@@ -1,3 +1,4 @@
+import { ButtonLink } from "#/components/ui/button-link";
 import type { Education, Grade } from "#/generated/prisma/client";
 import { formatDateRange } from "#/lib/format-date";
 import { Badge } from "@/components/ui/badge";
@@ -35,12 +36,26 @@ export const EducationCard = ({ education }: EducationCardProps) => {
 				{education.grades.length > 0 && (
 					<div className="flex flex-wrap gap-1.5 mt-1">
 						{education.grades.map((grade) => (
-							<Badge key={grade.id} variant="secondary" className="hover:bg-secondary/80 transition-colors">
+							<Badge
+								key={grade.id}
+								variant="secondary"
+								className="hover:bg-secondary/80 transition-colors"
+							>
 								{grade.name}
 							</Badge>
 						))}
 					</div>
 				)}
+
+				<div className="mt-5">
+					<ButtonLink
+						href={`/educations/${education.id}`}
+						variant="outline"
+						size="sm"
+					>
+						Voir plus
+					</ButtonLink>
+				</div>
 			</div>
 		</div>
 	);

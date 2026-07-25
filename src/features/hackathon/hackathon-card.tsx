@@ -1,5 +1,6 @@
 // hackathon-card.tsx
 import { ExternalLink, Github, Globe, Trophy } from "lucide-react";
+import { ButtonLink } from "#/components/ui/button-link";
 import type { Hackathon, HackathonLink } from "#/generated/prisma/client";
 import { formatDateRange } from "#/lib/format-date";
 import { excerpt } from "#/lib/string";
@@ -40,7 +41,10 @@ export const HackathonCard = ({ hackathon }: HackathonCardProps) => {
 				<div className="flex items-center gap-2 text-xs text-muted-foreground">
 					{hackathon.location && <span>{hackathon.location}</span>}
 					{hackathon.win && (
-						<Badge variant="secondary" className="gap-1 hover:bg-secondary/80 transition-colors">
+						<Badge
+							variant="secondary"
+							className="gap-1 hover:bg-secondary/80 transition-colors"
+						>
 							<Trophy className="size-3 text-yellow-500" />
 							{hackathon.win}
 						</Badge>
@@ -61,14 +65,24 @@ export const HackathonCard = ({ hackathon }: HackathonCardProps) => {
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label={link.title}
-									className="border border-border text-muted-foreground hover:border-primary hover:text-primary-foreground hover:bg-primary flex size-7 items-center justify-center rounded-md transition-all duration-200 hover:scale-105"
+									className="border text-muted-foreground hover:border-primary hover:text-primary-foreground hover:bg-primary flex size-9  items-center justify-center rounded-md transition-all duration-200 hover:scale-105"
 								>
-									<Icon className="size-3" />
+									<Icon className="size-4" />
 								</a>
 							);
 						})}
 					</div>
 				)}
+
+				<div className="mt-5">
+					<ButtonLink
+						href={`/hackathons/${hackathon.id}`}
+						variant="outline"
+						size="sm"
+					>
+						Voir plus
+					</ButtonLink>
+				</div>
 			</div>
 		</div>
 	);

@@ -1,6 +1,6 @@
-export function formatRelativeDate(dateString: string) {
-	const date = new Date(dateString);
-	const diffSeconds = Math.round((date.getTime() - Date.now()) / 1000);
+export function ago(date: string | Date) {
+	const newDate = date instanceof Date ? date : new Date(date);
+	const diffSeconds = Math.round((newDate.getTime() - Date.now()) / 1000);
 
 	const divisions: [Intl.RelativeTimeFormatUnit, number][] = [
 		["year", 60 * 60 * 24 * 365],

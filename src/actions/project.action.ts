@@ -14,3 +14,63 @@ export const findLatestPublishedProjectsFn = createServerFn({ method: "GET" })
 			},
 		});
 	});
+
+export const findPublishedProjectByIdFn = createServerFn({ method: "GET" })
+	.validator((data: { id: string }) => data)
+	.handler(async ({ data }) => {
+		return await prisma.project.findUniqueOrThrow({
+			where: { isPublished: true, id: data.id },
+			include: { links: true },
+		});
+	});
+
+export const findPaginatedProjectsPublished = createServerFn({
+	method: "GET",
+})
+	.validator(
+		(data: {
+			limit?: number;
+			page?: number;
+			offset?: number;
+			orderBy?: string;
+			direction?: string;
+		}) => {
+			let safeOrderBy = data.orderBy || "updatedAt";
+			if (safeOrderBy === "startAt") {
+				safeOrderBy = "start";
+			}
+
+			const safeDirection = data.direction === "asc" ? "asc" : "desc";
+
+			return {
+				...data,
+				orderBy: safeOrderBy,
+				direction: safeDirection,
+			};
+		},
+	)
+	.handler(
+		async ({
+			data = {
+				limit: 12,
+				page: 1,
+				offset: 0,
+				orderBy: "updatedAt",
+				direction: "desc",
+			},
+		}) => {
+			const [count, items] = await prisma.$transaction([
+				prisma.project.count({ where: { isPublished: true } }),
+				prisma.project.findMany({
+					where: { isPublished: true },
+					orderBy: {
+						[data.orderBy]: data.direction,
+					},
+					take: data.limit,
+					skip: data.offset,
+					include: { links: true },
+				}),
+			]);
+			return { count, items };
+		},
+	);

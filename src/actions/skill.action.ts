@@ -19,10 +19,39 @@ export const findSkillByIdAndSlug = createServerFn({ method: "GET" })
 		});
 	});
 
-export const findSkillPublished = createServerFn({ method: "GET" }).handler(
-	async () => {
-		return await prisma.skill.findMany({
-			where: { isPublished: true },
-		});
-	},
-);
+export const findPaginatedSkillsPublished = createServerFn({
+	method: "GET",
+})
+	.validator(
+		(data: {
+			limit?: number;
+			page?: number;
+			offset?: number;
+			orderBy?: string;
+			direction?: string;
+		}) => data,
+	)
+	.handler(
+		async ({
+			data = {
+				limit: 10,
+				page: 1,
+				offset: 0,
+				orderBy: "createdAt",
+				direction: "desc",
+			},
+		}) => {
+			const [count, items] = await prisma.$transaction([
+				prisma.skill.count({ where: { isPublished: true } }),
+				prisma.skill.findMany({
+					where: { isPublished: true },
+					orderBy: {
+						[data.orderBy as keyof typeof prisma.skill]: data.direction,
+					},
+					take: data.limit,
+					skip: data.offset,
+				}),
+			]);
+			return { count, items };
+		},
+	);

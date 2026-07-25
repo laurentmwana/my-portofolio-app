@@ -4,9 +4,16 @@ import { Button } from "./button";
 
 type Props = ComponentProps<typeof Button> & { href?: string };
 
-export const ButtonLink: FC<Props> = ({ href = "#", disabled, children }) => {
+export const ButtonLink: FC<Props> = ({
+	href = "#",
+	disabled,
+	children,
+	...props
+}) => {
 	return (
 		<Button
+			{...props}
+			nativeButton={false}
 			render={(props) => (
 				<Link
 					className={`${disabled ? "cursor-allowed" : "cursor-pointer"} `}
