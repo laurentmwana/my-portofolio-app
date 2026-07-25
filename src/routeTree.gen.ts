@@ -9,13 +9,132 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as GuestRouteImport } from './routes/_guest'
+import { Route as PortofolioRouteImport } from './routes/_portofolio'
+import { Route as ProtectedRouteImport } from './routes/_protected'
+import { Route as GuestAuthRouteImport } from './routes/_guest/auth'
+import { Route as PortofolioIndexRouteImport } from './routes/_portofolio/index'
+import { Route as PortofolioSkillsRouteImport } from './routes/_portofolio/skills'
+import { Route as ProtectedDashboardRouteImport } from './routes/_protected/dashboard'
+import { Route as ProtectedProfileRouteImport } from './routes/_protected/profile'
+import { Route as GuestAuthDemoRouteImport } from './routes/_guest/auth/demo'
+import { Route as GuestAuthLoginRouteImport } from './routes/_guest/auth/login'
+import { Route as PortofolioEducationsIndexRouteImport } from './routes/_portofolio/educations/index'
+import { Route as PortofolioEducationsIdRouteImport } from './routes/_portofolio/educations/$id'
+import { Route as PortofolioHackathonsIndexRouteImport } from './routes/_portofolio/hackathons/index'
+import { Route as PortofolioHackathonsIdRouteImport } from './routes/_portofolio/hackathons/$id'
+import { Route as PortofolioLegalCgvRouteImport } from './routes/_portofolio/legal/cgv'
+import { Route as PortofolioLegalPrivacyRouteImport } from './routes/_portofolio/legal/privacy'
+import { Route as PortofolioProjectsIndexRouteImport } from './routes/_portofolio/projects/index'
+import { Route as PortofolioProjectsIdRouteImport } from './routes/_portofolio/projects/$id'
+import { Route as PortofolioWorksIndexRouteImport } from './routes/_portofolio/works/index'
+import { Route as PortofolioWorksIdRouteImport } from './routes/_portofolio/works/$id'
+import { Route as ProtectedAdminAboutRouteImport } from './routes/_protected/admin/about'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
-const IndexRoute = IndexRouteImport.update({
+const GuestRoute = GuestRouteImport.update({
+  id: '/_guest',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortofolioRoute = PortofolioRouteImport.update({
+  id: '/_portofolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProtectedRoute = ProtectedRouteImport.update({
+  id: '/_protected',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuestAuthRoute = GuestAuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => GuestRoute,
+} as any)
+const PortofolioIndexRoute = PortofolioIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => PortofolioRoute,
+} as any)
+const PortofolioSkillsRoute = PortofolioSkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => PortofolioRoute,
+} as any)
+const ProtectedDashboardRoute = ProtectedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+const ProtectedProfileRoute = ProtectedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+const GuestAuthDemoRoute = GuestAuthDemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => GuestAuthRoute,
+} as any)
+const GuestAuthLoginRoute = GuestAuthLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => GuestAuthRoute,
+} as any)
+const PortofolioEducationsIndexRoute =
+  PortofolioEducationsIndexRouteImport.update({
+    id: '/educations/',
+    path: '/educations/',
+    getParentRoute: () => PortofolioRoute,
+  } as any)
+const PortofolioEducationsIdRoute = PortofolioEducationsIdRouteImport.update({
+  id: '/educations/$id',
+  path: '/educations/$id',
+  getParentRoute: () => PortofolioRoute,
+} as any)
+const PortofolioHackathonsIndexRoute =
+  PortofolioHackathonsIndexRouteImport.update({
+    id: '/hackathons/',
+    path: '/hackathons/',
+    getParentRoute: () => PortofolioRoute,
+  } as any)
+const PortofolioHackathonsIdRoute = PortofolioHackathonsIdRouteImport.update({
+  id: '/hackathons/$id',
+  path: '/hackathons/$id',
+  getParentRoute: () => PortofolioRoute,
+} as any)
+const PortofolioLegalCgvRoute = PortofolioLegalCgvRouteImport.update({
+  id: '/legal/cgv',
+  path: '/legal/cgv',
+  getParentRoute: () => PortofolioRoute,
+} as any)
+const PortofolioLegalPrivacyRoute = PortofolioLegalPrivacyRouteImport.update({
+  id: '/legal/privacy',
+  path: '/legal/privacy',
+  getParentRoute: () => PortofolioRoute,
+} as any)
+const PortofolioProjectsIndexRoute = PortofolioProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => PortofolioRoute,
+} as any)
+const PortofolioProjectsIdRoute = PortofolioProjectsIdRouteImport.update({
+  id: '/projects/$id',
+  path: '/projects/$id',
+  getParentRoute: () => PortofolioRoute,
+} as any)
+const PortofolioWorksIndexRoute = PortofolioWorksIndexRouteImport.update({
+  id: '/works/',
+  path: '/works/',
+  getParentRoute: () => PortofolioRoute,
+} as any)
+const PortofolioWorksIdRoute = PortofolioWorksIdRouteImport.update({
+  id: '/works/$id',
+  path: '/works/$id',
+  getParentRoute: () => PortofolioRoute,
+} as any)
+const ProtectedAdminAboutRoute = ProtectedAdminAboutRouteImport.update({
+  id: '/admin/about',
+  path: '/admin/about',
+  getParentRoute: () => ProtectedRoute,
 } as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
@@ -24,39 +143,296 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof PortofolioIndexRoute
+  '/auth': typeof GuestAuthRouteWithChildren
+  '/skills': typeof PortofolioSkillsRoute
+  '/dashboard': typeof ProtectedDashboardRoute
+  '/profile': typeof ProtectedProfileRoute
+  '/auth/demo': typeof GuestAuthDemoRoute
+  '/auth/login': typeof GuestAuthLoginRoute
+  '/educations/$id': typeof PortofolioEducationsIdRoute
+  '/hackathons/$id': typeof PortofolioHackathonsIdRoute
+  '/legal/cgv': typeof PortofolioLegalCgvRoute
+  '/legal/privacy': typeof PortofolioLegalPrivacyRoute
+  '/projects/$id': typeof PortofolioProjectsIdRoute
+  '/works/$id': typeof PortofolioWorksIdRoute
+  '/admin/about': typeof ProtectedAdminAboutRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/educations/': typeof PortofolioEducationsIndexRoute
+  '/hackathons/': typeof PortofolioHackathonsIndexRoute
+  '/projects/': typeof PortofolioProjectsIndexRoute
+  '/works/': typeof PortofolioWorksIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/': typeof PortofolioIndexRoute
+  '/auth': typeof GuestAuthRouteWithChildren
+  '/skills': typeof PortofolioSkillsRoute
+  '/dashboard': typeof ProtectedDashboardRoute
+  '/profile': typeof ProtectedProfileRoute
+  '/auth/demo': typeof GuestAuthDemoRoute
+  '/auth/login': typeof GuestAuthLoginRoute
+  '/educations/$id': typeof PortofolioEducationsIdRoute
+  '/hackathons/$id': typeof PortofolioHackathonsIdRoute
+  '/legal/cgv': typeof PortofolioLegalCgvRoute
+  '/legal/privacy': typeof PortofolioLegalPrivacyRoute
+  '/projects/$id': typeof PortofolioProjectsIdRoute
+  '/works/$id': typeof PortofolioWorksIdRoute
+  '/admin/about': typeof ProtectedAdminAboutRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/educations': typeof PortofolioEducationsIndexRoute
+  '/hackathons': typeof PortofolioHackathonsIndexRoute
+  '/projects': typeof PortofolioProjectsIndexRoute
+  '/works': typeof PortofolioWorksIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_guest': typeof GuestRouteWithChildren
+  '/_portofolio': typeof PortofolioRouteWithChildren
+  '/_protected': typeof ProtectedRouteWithChildren
+  '/_guest/auth': typeof GuestAuthRouteWithChildren
+  '/_portofolio/skills': typeof PortofolioSkillsRoute
+  '/_protected/dashboard': typeof ProtectedDashboardRoute
+  '/_protected/profile': typeof ProtectedProfileRoute
+  '/_portofolio/': typeof PortofolioIndexRoute
+  '/_guest/auth/demo': typeof GuestAuthDemoRoute
+  '/_guest/auth/login': typeof GuestAuthLoginRoute
+  '/_portofolio/educations/$id': typeof PortofolioEducationsIdRoute
+  '/_portofolio/hackathons/$id': typeof PortofolioHackathonsIdRoute
+  '/_portofolio/legal/cgv': typeof PortofolioLegalCgvRoute
+  '/_portofolio/legal/privacy': typeof PortofolioLegalPrivacyRoute
+  '/_portofolio/projects/$id': typeof PortofolioProjectsIdRoute
+  '/_portofolio/works/$id': typeof PortofolioWorksIdRoute
+  '/_protected/admin/about': typeof ProtectedAdminAboutRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/_portofolio/educations/': typeof PortofolioEducationsIndexRoute
+  '/_portofolio/hackathons/': typeof PortofolioHackathonsIndexRoute
+  '/_portofolio/projects/': typeof PortofolioProjectsIndexRoute
+  '/_portofolio/works/': typeof PortofolioWorksIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/auth/$'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/skills'
+    | '/dashboard'
+    | '/profile'
+    | '/auth/demo'
+    | '/auth/login'
+    | '/educations/$id'
+    | '/hackathons/$id'
+    | '/legal/cgv'
+    | '/legal/privacy'
+    | '/projects/$id'
+    | '/works/$id'
+    | '/admin/about'
+    | '/api/auth/$'
+    | '/educations/'
+    | '/hackathons/'
+    | '/projects/'
+    | '/works/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/auth/$'
-  id: '__root__' | '/' | '/api/auth/$'
+  to:
+    | '/'
+    | '/auth'
+    | '/skills'
+    | '/dashboard'
+    | '/profile'
+    | '/auth/demo'
+    | '/auth/login'
+    | '/educations/$id'
+    | '/hackathons/$id'
+    | '/legal/cgv'
+    | '/legal/privacy'
+    | '/projects/$id'
+    | '/works/$id'
+    | '/admin/about'
+    | '/api/auth/$'
+    | '/educations'
+    | '/hackathons'
+    | '/projects'
+    | '/works'
+  id:
+    | '__root__'
+    | '/_guest'
+    | '/_portofolio'
+    | '/_protected'
+    | '/_guest/auth'
+    | '/_portofolio/skills'
+    | '/_protected/dashboard'
+    | '/_protected/profile'
+    | '/_portofolio/'
+    | '/_guest/auth/demo'
+    | '/_guest/auth/login'
+    | '/_portofolio/educations/$id'
+    | '/_portofolio/hackathons/$id'
+    | '/_portofolio/legal/cgv'
+    | '/_portofolio/legal/privacy'
+    | '/_portofolio/projects/$id'
+    | '/_portofolio/works/$id'
+    | '/_protected/admin/about'
+    | '/api/auth/$'
+    | '/_portofolio/educations/'
+    | '/_portofolio/hackathons/'
+    | '/_portofolio/projects/'
+    | '/_portofolio/works/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  GuestRoute: typeof GuestRouteWithChildren
+  PortofolioRoute: typeof PortofolioRouteWithChildren
+  ProtectedRoute: typeof ProtectedRouteWithChildren
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_guest': {
+      id: '/_guest'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof GuestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_portofolio': {
+      id: '/_portofolio'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PortofolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_protected': {
+      id: '/_protected'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof ProtectedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_guest/auth': {
+      id: '/_guest/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof GuestAuthRouteImport
+      parentRoute: typeof GuestRoute
+    }
+    '/_portofolio/': {
+      id: '/_portofolio/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof PortofolioIndexRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_portofolio/skills': {
+      id: '/_portofolio/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof PortofolioSkillsRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_protected/dashboard': {
+      id: '/_protected/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof ProtectedDashboardRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/profile': {
+      id: '/_protected/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProtectedProfileRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_guest/auth/demo': {
+      id: '/_guest/auth/demo'
+      path: '/demo'
+      fullPath: '/auth/demo'
+      preLoaderRoute: typeof GuestAuthDemoRouteImport
+      parentRoute: typeof GuestAuthRoute
+    }
+    '/_guest/auth/login': {
+      id: '/_guest/auth/login'
+      path: '/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof GuestAuthLoginRouteImport
+      parentRoute: typeof GuestAuthRoute
+    }
+    '/_portofolio/educations/': {
+      id: '/_portofolio/educations/'
+      path: '/educations'
+      fullPath: '/educations/'
+      preLoaderRoute: typeof PortofolioEducationsIndexRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_portofolio/educations/$id': {
+      id: '/_portofolio/educations/$id'
+      path: '/educations/$id'
+      fullPath: '/educations/$id'
+      preLoaderRoute: typeof PortofolioEducationsIdRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_portofolio/hackathons/': {
+      id: '/_portofolio/hackathons/'
+      path: '/hackathons'
+      fullPath: '/hackathons/'
+      preLoaderRoute: typeof PortofolioHackathonsIndexRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_portofolio/hackathons/$id': {
+      id: '/_portofolio/hackathons/$id'
+      path: '/hackathons/$id'
+      fullPath: '/hackathons/$id'
+      preLoaderRoute: typeof PortofolioHackathonsIdRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_portofolio/legal/cgv': {
+      id: '/_portofolio/legal/cgv'
+      path: '/legal/cgv'
+      fullPath: '/legal/cgv'
+      preLoaderRoute: typeof PortofolioLegalCgvRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_portofolio/legal/privacy': {
+      id: '/_portofolio/legal/privacy'
+      path: '/legal/privacy'
+      fullPath: '/legal/privacy'
+      preLoaderRoute: typeof PortofolioLegalPrivacyRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_portofolio/projects/': {
+      id: '/_portofolio/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof PortofolioProjectsIndexRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_portofolio/projects/$id': {
+      id: '/_portofolio/projects/$id'
+      path: '/projects/$id'
+      fullPath: '/projects/$id'
+      preLoaderRoute: typeof PortofolioProjectsIdRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_portofolio/works/': {
+      id: '/_portofolio/works/'
+      path: '/works'
+      fullPath: '/works/'
+      preLoaderRoute: typeof PortofolioWorksIndexRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_portofolio/works/$id': {
+      id: '/_portofolio/works/$id'
+      path: '/works/$id'
+      fullPath: '/works/$id'
+      preLoaderRoute: typeof PortofolioWorksIdRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_protected/admin/about': {
+      id: '/_protected/admin/about'
+      path: '/admin/about'
+      fullPath: '/admin/about'
+      preLoaderRoute: typeof ProtectedAdminAboutRouteImport
+      parentRoute: typeof ProtectedRoute
     }
     '/api/auth/$': {
       id: '/api/auth/$'
@@ -68,8 +444,84 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface GuestAuthRouteChildren {
+  GuestAuthDemoRoute: typeof GuestAuthDemoRoute
+  GuestAuthLoginRoute: typeof GuestAuthLoginRoute
+}
+
+const GuestAuthRouteChildren: GuestAuthRouteChildren = {
+  GuestAuthDemoRoute: GuestAuthDemoRoute,
+  GuestAuthLoginRoute: GuestAuthLoginRoute,
+}
+
+const GuestAuthRouteWithChildren = GuestAuthRoute._addFileChildren(
+  GuestAuthRouteChildren,
+)
+
+interface GuestRouteChildren {
+  GuestAuthRoute: typeof GuestAuthRouteWithChildren
+}
+
+const GuestRouteChildren: GuestRouteChildren = {
+  GuestAuthRoute: GuestAuthRouteWithChildren,
+}
+
+const GuestRouteWithChildren = GuestRoute._addFileChildren(GuestRouteChildren)
+
+interface PortofolioRouteChildren {
+  PortofolioSkillsRoute: typeof PortofolioSkillsRoute
+  PortofolioIndexRoute: typeof PortofolioIndexRoute
+  PortofolioEducationsIdRoute: typeof PortofolioEducationsIdRoute
+  PortofolioHackathonsIdRoute: typeof PortofolioHackathonsIdRoute
+  PortofolioLegalCgvRoute: typeof PortofolioLegalCgvRoute
+  PortofolioLegalPrivacyRoute: typeof PortofolioLegalPrivacyRoute
+  PortofolioProjectsIdRoute: typeof PortofolioProjectsIdRoute
+  PortofolioWorksIdRoute: typeof PortofolioWorksIdRoute
+  PortofolioEducationsIndexRoute: typeof PortofolioEducationsIndexRoute
+  PortofolioHackathonsIndexRoute: typeof PortofolioHackathonsIndexRoute
+  PortofolioProjectsIndexRoute: typeof PortofolioProjectsIndexRoute
+  PortofolioWorksIndexRoute: typeof PortofolioWorksIndexRoute
+}
+
+const PortofolioRouteChildren: PortofolioRouteChildren = {
+  PortofolioSkillsRoute: PortofolioSkillsRoute,
+  PortofolioIndexRoute: PortofolioIndexRoute,
+  PortofolioEducationsIdRoute: PortofolioEducationsIdRoute,
+  PortofolioHackathonsIdRoute: PortofolioHackathonsIdRoute,
+  PortofolioLegalCgvRoute: PortofolioLegalCgvRoute,
+  PortofolioLegalPrivacyRoute: PortofolioLegalPrivacyRoute,
+  PortofolioProjectsIdRoute: PortofolioProjectsIdRoute,
+  PortofolioWorksIdRoute: PortofolioWorksIdRoute,
+  PortofolioEducationsIndexRoute: PortofolioEducationsIndexRoute,
+  PortofolioHackathonsIndexRoute: PortofolioHackathonsIndexRoute,
+  PortofolioProjectsIndexRoute: PortofolioProjectsIndexRoute,
+  PortofolioWorksIndexRoute: PortofolioWorksIndexRoute,
+}
+
+const PortofolioRouteWithChildren = PortofolioRoute._addFileChildren(
+  PortofolioRouteChildren,
+)
+
+interface ProtectedRouteChildren {
+  ProtectedDashboardRoute: typeof ProtectedDashboardRoute
+  ProtectedProfileRoute: typeof ProtectedProfileRoute
+  ProtectedAdminAboutRoute: typeof ProtectedAdminAboutRoute
+}
+
+const ProtectedRouteChildren: ProtectedRouteChildren = {
+  ProtectedDashboardRoute: ProtectedDashboardRoute,
+  ProtectedProfileRoute: ProtectedProfileRoute,
+  ProtectedAdminAboutRoute: ProtectedAdminAboutRoute,
+}
+
+const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
+  ProtectedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  GuestRoute: GuestRouteWithChildren,
+  PortofolioRoute: PortofolioRouteWithChildren,
+  ProtectedRoute: ProtectedRouteWithChildren,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport
