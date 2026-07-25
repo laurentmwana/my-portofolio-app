@@ -3,7 +3,7 @@ import { BlurFade } from "#/components/ui/blur-fade";
 import { BlurFadeText } from "#/components/ui/blur-fade-text";
 import { DATA } from "#/config/resume";
 
-const BLUR_FADE_DELAY = 0.5;
+const BLUR_FADE_DELAY = 0.1;
 
 export const Presentation = () => {
 	return (

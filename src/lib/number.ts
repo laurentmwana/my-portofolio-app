@@ -51,3 +51,6 @@ export const formatNumberLimit = (
 
 export const formatPhone = (phone: string) =>
 	phone.replace(/(\d{2})(?=\d)/g, "$1 ");
+
+export const offsetPagination = (page: number, limit: number) =>
+	(page - 1) * limit;

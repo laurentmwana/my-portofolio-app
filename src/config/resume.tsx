@@ -1,4 +1,4 @@
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon } from "lucide-react";
 import { Icons } from "#/components/icons";
 
 export const DATA = {
@@ -9,18 +9,15 @@ export const DATA = {
 	locationLink:
 		"https://www.google.com/maps/place/kinshasa/@-4.325,15.322,12z/data=!3m1!4b1!4m6!3m5!1s0x1a6a2e7f8c9d8f7f:0x1a6a2e7f8c9d8f7f!8m2!3d-4.325!4d15.322!16zL20vMDJwZ3A?entry=ttu",
 	description:
-		"Je suis ingénieur logiciel et entrepreneur, passionné par la création de produits innovants. J'ai de l'expérience en développement full-stack, en cloud computing et en gestion de produits. Je me concentre actuellement sur la création et le développement de mes propres entreprises SaaS.",
+		"Je suis ingénieur logiciel, passionné par la création de produits innovants. J'ai de l'expérience en développement full-stack, en cloud computing et en gestion de produits. Je me concentre actuellement sur la création et le développement de mes propres projets SaaS.",
 	summary:
-		"Je suis ingénieur logiciel et entrepreneur, passionné par la création de produits innovants. J'ai de l'expérience en développement full-stack, en cloud computing et en gestion de produits. Je me concentre actuellement sur la création et le développement de mes propres entreprises SaaS.",
+		"Je suis ingénieur logiciel, passionné par la création de produits innovants. J'ai de l'expérience en développement full-stack, en cloud computing et en gestion de produits. Je me concentre actuellement sur la création et le développement de mes propres projets SaaS.",
 	avatarUrl: "/images/2.png",
 
-	navbar: [
-		{ href: "/", icon: HomeIcon, label: "Accueil" },
-		{ href: "/blog", icon: NotebookIcon, label: "Blog" },
-	],
+	navbar: [{ href: "/", icon: HomeIcon, label: "Accueil" }],
 	contact: {
-		email: "hello@example.com",
-		tel: "+123456789",
+		email: "laurentmwn@gmail.com",
+		tel: "+243820645973",
 		social: {
 			GitHub: {
 				name: "GitHub",
@@ -45,7 +42,7 @@ export const DATA = {
 			},
 			Youtube: {
 				name: "Youtube",
-				url: "https://dub.sh/dillion-youtube",
+				url: "https://youtube.com/@labeya-dev",
 				icon: Icons.youtube,
 				navbar: true,
 			},
