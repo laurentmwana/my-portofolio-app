@@ -21,6 +21,8 @@ import { Route as GuestAuthDemoRouteImport } from './routes/_guest/auth/demo'
 import { Route as GuestAuthLoginRouteImport } from './routes/_guest/auth/login'
 import { Route as PortofolioLegalCgvRouteImport } from './routes/_portofolio/legal/cgv'
 import { Route as PortofolioLegalPrivacyRouteImport } from './routes/_portofolio/legal/privacy'
+import { Route as PortofolioProjectsIndexRouteImport } from './routes/_portofolio/projects/index'
+import { Route as PortofolioProjectsIdRouteImport } from './routes/_portofolio/projects/$id'
 import { Route as PortofolioWorksIndexRouteImport } from './routes/_portofolio/works/index'
 import { Route as PortofolioWorksIdRouteImport } from './routes/_portofolio/works/$id'
 import { Route as ProtectedAdminAboutRouteImport } from './routes/_protected/admin/about'
@@ -83,6 +85,16 @@ const PortofolioLegalPrivacyRoute = PortofolioLegalPrivacyRouteImport.update({
   path: '/legal/privacy',
   getParentRoute: () => PortofolioRoute,
 } as any)
+const PortofolioProjectsIndexRoute = PortofolioProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => PortofolioRoute,
+} as any)
+const PortofolioProjectsIdRoute = PortofolioProjectsIdRouteImport.update({
+  id: '/projects/$id',
+  path: '/projects/$id',
+  getParentRoute: () => PortofolioRoute,
+} as any)
 const PortofolioWorksIndexRoute = PortofolioWorksIndexRouteImport.update({
   id: '/works/',
   path: '/works/',
@@ -114,9 +126,11 @@ export interface FileRoutesByFullPath {
   '/auth/login': typeof GuestAuthLoginRoute
   '/legal/cgv': typeof PortofolioLegalCgvRoute
   '/legal/privacy': typeof PortofolioLegalPrivacyRoute
+  '/projects/$id': typeof PortofolioProjectsIdRoute
   '/works/$id': typeof PortofolioWorksIdRoute
   '/admin/about': typeof ProtectedAdminAboutRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/projects/': typeof PortofolioProjectsIndexRoute
   '/works/': typeof PortofolioWorksIndexRoute
 }
 export interface FileRoutesByTo {
@@ -129,9 +143,11 @@ export interface FileRoutesByTo {
   '/auth/login': typeof GuestAuthLoginRoute
   '/legal/cgv': typeof PortofolioLegalCgvRoute
   '/legal/privacy': typeof PortofolioLegalPrivacyRoute
+  '/projects/$id': typeof PortofolioProjectsIdRoute
   '/works/$id': typeof PortofolioWorksIdRoute
   '/admin/about': typeof ProtectedAdminAboutRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/projects': typeof PortofolioProjectsIndexRoute
   '/works': typeof PortofolioWorksIndexRoute
 }
 export interface FileRoutesById {
@@ -148,9 +164,11 @@ export interface FileRoutesById {
   '/_guest/auth/login': typeof GuestAuthLoginRoute
   '/_portofolio/legal/cgv': typeof PortofolioLegalCgvRoute
   '/_portofolio/legal/privacy': typeof PortofolioLegalPrivacyRoute
+  '/_portofolio/projects/$id': typeof PortofolioProjectsIdRoute
   '/_portofolio/works/$id': typeof PortofolioWorksIdRoute
   '/_protected/admin/about': typeof ProtectedAdminAboutRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/_portofolio/projects/': typeof PortofolioProjectsIndexRoute
   '/_portofolio/works/': typeof PortofolioWorksIndexRoute
 }
 export interface FileRouteTypes {
@@ -165,9 +183,11 @@ export interface FileRouteTypes {
     | '/auth/login'
     | '/legal/cgv'
     | '/legal/privacy'
+    | '/projects/$id'
     | '/works/$id'
     | '/admin/about'
     | '/api/auth/$'
+    | '/projects/'
     | '/works/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -180,9 +200,11 @@ export interface FileRouteTypes {
     | '/auth/login'
     | '/legal/cgv'
     | '/legal/privacy'
+    | '/projects/$id'
     | '/works/$id'
     | '/admin/about'
     | '/api/auth/$'
+    | '/projects'
     | '/works'
   id:
     | '__root__'
@@ -198,9 +220,11 @@ export interface FileRouteTypes {
     | '/_guest/auth/login'
     | '/_portofolio/legal/cgv'
     | '/_portofolio/legal/privacy'
+    | '/_portofolio/projects/$id'
     | '/_portofolio/works/$id'
     | '/_protected/admin/about'
     | '/api/auth/$'
+    | '/_portofolio/projects/'
     | '/_portofolio/works/'
   fileRoutesById: FileRoutesById
 }
@@ -297,6 +321,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortofolioLegalPrivacyRouteImport
       parentRoute: typeof PortofolioRoute
     }
+    '/_portofolio/projects/': {
+      id: '/_portofolio/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof PortofolioProjectsIndexRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
+    '/_portofolio/projects/$id': {
+      id: '/_portofolio/projects/$id'
+      path: '/projects/$id'
+      fullPath: '/projects/$id'
+      preLoaderRoute: typeof PortofolioProjectsIdRouteImport
+      parentRoute: typeof PortofolioRoute
+    }
     '/_portofolio/works/': {
       id: '/_portofolio/works/'
       path: '/works'
@@ -357,7 +395,9 @@ interface PortofolioRouteChildren {
   PortofolioIndexRoute: typeof PortofolioIndexRoute
   PortofolioLegalCgvRoute: typeof PortofolioLegalCgvRoute
   PortofolioLegalPrivacyRoute: typeof PortofolioLegalPrivacyRoute
+  PortofolioProjectsIdRoute: typeof PortofolioProjectsIdRoute
   PortofolioWorksIdRoute: typeof PortofolioWorksIdRoute
+  PortofolioProjectsIndexRoute: typeof PortofolioProjectsIndexRoute
   PortofolioWorksIndexRoute: typeof PortofolioWorksIndexRoute
 }
 
@@ -366,7 +406,9 @@ const PortofolioRouteChildren: PortofolioRouteChildren = {
   PortofolioIndexRoute: PortofolioIndexRoute,
   PortofolioLegalCgvRoute: PortofolioLegalCgvRoute,
   PortofolioLegalPrivacyRoute: PortofolioLegalPrivacyRoute,
+  PortofolioProjectsIdRoute: PortofolioProjectsIdRoute,
   PortofolioWorksIdRoute: PortofolioWorksIdRoute,
+  PortofolioProjectsIndexRoute: PortofolioProjectsIndexRoute,
   PortofolioWorksIndexRoute: PortofolioWorksIndexRoute,
 }
 

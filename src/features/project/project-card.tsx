@@ -1,5 +1,6 @@
 // project-card.tsx
 import { ExternalLink, Github, Globe } from "lucide-react";
+import { ButtonLink } from "#/components/ui/button-link";
 import type { Project, ProjectLink } from "#/generated/prisma/client";
 import { excerpt } from "#/lib/string";
 import { Badge } from "@/components/ui/badge";
@@ -41,7 +42,11 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 				{project.technologies.length > 0 && (
 					<div className="flex flex-wrap gap-1.5 mt-auto pt-2">
 						{project.technologies.slice(0, 5).map((tech) => (
-							<Badge key={tech} variant="outline" className="text-[10px] py-0 px-1.5 hover:bg-accent transition-colors">
+							<Badge
+								key={tech}
+								variant="outline"
+								className="text-[10px] py-0 px-1.5 hover:bg-accent transition-colors"
+							>
 								{tech}
 							</Badge>
 						))}
@@ -67,6 +72,16 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 						})}
 					</div>
 				)}
+
+				<div className="mt-5">
+					<ButtonLink
+						href={`/projects/${project.id}`}
+						variant="outline"
+						size="sm"
+					>
+						Voir plus
+					</ButtonLink>
+				</div>
 			</div>
 		</div>
 	);
