@@ -2,12 +2,12 @@ import { useMutation } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { Loader } from "#/components/ui/loader";
-import { LoginForm } from "#/features/auth/login-form";
+import { SignInForm } from "#/features/auth/sign-in-form";
 import { authClient } from "#/lib/auth-client";
 import type { LoginValues } from "#/schemas/auth.schema";
 import { queriesSchema } from "#/schemas/default.schema";
 
-export const Route = createFileRoute("/_guest/auth/login")({
+export const Route = createFileRoute("/_guest/auth/sign-in")({
 	validateSearch: queriesSchema,
 	component: Login,
 	head: () => ({
@@ -62,7 +62,7 @@ function Login() {
 
 	return (
 		<div>
-			<LoginForm
+			<SignInForm
 				error={loginMutation.error?.message}
 				onSubmit={(values) => loginMutation.mutate(values)}
 				isPending={loginMutation.isPending}

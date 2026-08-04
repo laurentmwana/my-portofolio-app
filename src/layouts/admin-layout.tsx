@@ -42,13 +42,13 @@ const mainItems: GroupNavItem[] = [
 		isShow: true,
 		children: [
 			{
-				href: "/admin/work-experience",
+				href: "/admin/works",
 				title: "Work Experience",
 				isShow: true,
 				icon: Briefcase,
 			},
 			{
-				href: "/admin/education",
+				href: "/admin/educations",
 				title: "Education",
 				isShow: true,
 				icon: GraduationCap,
@@ -96,22 +96,22 @@ const navUserItems: NavItem[] = [
 		href: "/dashboard",
 	},
 	{
-		title: "Work Experience",
+		title: "Experiences",
 		icon: Briefcase,
-		href: "/admin/work-experience",
+		href: "/admin/works",
 	},
 	{
-		title: "Education",
+		title: "Educations",
 		icon: GraduationCap,
-		href: "/admin/education",
+		href: "/admin/educations",
 	},
 	{
-		title: "Project",
+		title: "Projets",
 		icon: FolderKanban,
 		href: "/admin/projects",
 	},
 	{
-		title: "Profil",
+		title: "Mon profil",
 		icon: User,
 		href: "/profile",
 	},

@@ -1,13 +1,106 @@
+import type { LucideIcon } from "lucide-react";
 import { HomeIcon } from "lucide-react";
+import type { ReactNode } from "react";
 import { Icons } from "#/components/icons";
+
+export interface NavbarItem {
+	href: string;
+	icon: LucideIcon;
+	label: string;
+}
+
+interface SocialLink {
+	name: string;
+	url: string;
+	icon: LucideIcon | React.ComponentType<{ className?: string }>;
+	navbar: boolean;
+}
+
+interface ContactInfo {
+	email: string;
+	tel: string;
+	social: Record<string, SocialLink>;
+}
+
+interface WorkExperience {
+	company: string;
+	href: string;
+	badges: string[];
+	location: string;
+	title: string;
+	logoUrl: string;
+	start: string;
+	end: string;
+	description: string;
+}
+
+interface EducationItem {
+	school: string;
+	href: string;
+	degree: string;
+	logoUrl: string;
+	start: string;
+	end: string;
+}
+
+interface ProjectLink {
+	type: string;
+	href: string;
+	icon: ReactNode;
+}
+
+interface Project {
+	title: string;
+	href: string;
+	dates: string;
+	active: boolean;
+	description: string;
+	technologies: string[];
+	links: ProjectLink[];
+	image: string;
+	video: string;
+}
+
+interface HackathonLink {
+	title: string;
+	icon: ReactNode;
+	href: string;
+}
+
+interface Hackathon {
+	title: string;
+	dates: string;
+	location: string;
+	description: string;
+	image: string;
+	mlh?: string;
+	win?: string;
+	links: HackathonLink[];
+}
+
+interface ResumeData {
+	name: string;
+	initials: string;
+	url: string | null;
+	location: string;
+	locationLink: string;
+	description: string;
+	summary: string;
+	avatarUrl: string;
+	navbar: NavbarItem[];
+	contact: ContactInfo;
+	work: WorkExperience[];
+	education: EducationItem[];
+	projects: Project[];
+	hackathons: Hackathon[];
+}
 
 export const DATA = {
 	name: "Laurent Mwana",
 	initials: "LM",
 	url: null,
-	location: "RDC, Kinshasa",
-	locationLink:
-		"https://www.google.com/maps/place/kinshasa/@-4.325,15.322,12z/data=!3m1!4b1!4m6!3m5!1s0x1a6a2e7f8c9d8f7f:0x1a6a2e7f8c9d8f7f!8m2!3d-4.325!4d15.322!16zL20vMDJwZ3A?entry=ttu",
+	location: "Kinshasa, RDC",
+	locationLink: "https://www.google.com/maps/search/?api=1&query=Kinshasa,+RDC",
 	description:
 		"Je suis ingénieur logiciel, passionné par la création de produits innovants. J'ai de l'expérience en développement full-stack, en cloud computing et en gestion de produits. Je me concentre actuellement sur la création et le développement de mes propres projets SaaS.",
 	summary:
@@ -15,9 +108,10 @@ export const DATA = {
 	avatarUrl: "/images/2.png",
 
 	navbar: [{ href: "/", icon: HomeIcon, label: "Accueil" }],
+
 	contact: {
 		email: "laurentmwn@gmail.com",
-		tel: "+243820645973",
+		tel: "+243 820 645 973",
 		social: {
 			GitHub: {
 				name: "GitHub",
@@ -25,19 +119,16 @@ export const DATA = {
 				icon: Icons.github,
 				navbar: true,
 			},
-
 			LinkedIn: {
 				name: "LinkedIn",
 				url: "https://www.linkedin.com/in/laurentmwana",
 				icon: Icons.linkedin,
-
 				navbar: true,
 			},
 			X: {
 				name: "X",
 				url: "https://x.com/Labeya_",
 				icon: Icons.x,
-
 				navbar: true,
 			},
 			Youtube: {
@@ -48,9 +139,8 @@ export const DATA = {
 			},
 			email: {
 				name: "Envoyer un e-mail",
-				url: "#",
+				url: "mailto:laurentmwn@gmail.com",
 				icon: Icons.email,
-
 				navbar: false,
 			},
 		},
@@ -71,8 +161,8 @@ export const DATA = {
 		},
 		{
 			company: "Shopify",
-			badges: [],
 			href: "https://shopify.com",
+			badges: [],
 			location: "À distance",
 			title: "Ingénieur Logiciel",
 			logoUrl: "/shopify.svg",
@@ -130,6 +220,7 @@ export const DATA = {
 				"Conception et implémentation d'un système robuste de chiffrement des mots de passe et de stockage des cookies de navigation sous Ruby on Rails. Utilisation de l'API Yahoo Finance pour développer le filtre d'actions (equity screener) de dividend.com.",
 		},
 	],
+
 	education: [
 		{
 			school: "Buildspace",
@@ -164,6 +255,7 @@ export const DATA = {
 			end: "2016",
 		},
 	],
+
 	projects: [
 		{
 			title: "Chat Collect",
@@ -288,6 +380,7 @@ export const DATA = {
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
 		},
 	],
+
 	hackathons: [
 		{
 			title: "Hack Western 5",
@@ -317,7 +410,6 @@ export const DATA = {
 			location: "San Francisco, Californie",
 			description:
 				"Développement d'une application mobile transmettant les données médicales d'une victime depuis l'ambulance aux médecins de l'hôpital.",
-			icon: "public",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/firstnet.png",
 			links: [],
@@ -346,7 +438,7 @@ export const DATA = {
 				"Développement d'une application mobile attribuant un quota quotidien d'émissions de carbone aux utilisateurs afin de favoriser un environnement durable.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-davis.png",
-			win: "Best Data Hack",
+			win: "Meilleur hack data",
 			mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2018/white.svg",
 			links: [
 				{
@@ -381,7 +473,7 @@ export const DATA = {
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/eth-waterloo.png",
 			links: [
 				{
-					title: "Organization",
+					title: "Organisation",
 					icon: <Icons.github className="h-4 w-4" />,
 					href: "https://github.com/ethdocnet",
 				},
@@ -398,12 +490,12 @@ export const DATA = {
 			mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg",
 			links: [
 				{
-					title: "Streamer Source",
+					title: "Source (Streamer)",
 					icon: <Icons.github className="h-4 w-4" />,
 					href: "https://github.com/justinmichaud/htn2017",
 				},
 				{
-					title: "Client Source",
+					title: "Source (Client)",
 					icon: <Icons.github className="h-4 w-4" />,
 					href: "https://github.com/dillionverma/RTSPClient",
 				},
@@ -436,7 +528,7 @@ export const DATA = {
 			dates: "23 Juillet 2017",
 			location: "Toronto, Ontario",
 			description:
-				"Développement d'une extension Chrome qui enregistre les profils Facebook visités et envoie immédiatement un SMS à votre petite amie si vous visitez la page d'une autre fille.",
+				"Développement d'une extension Chrome qui enregistre les profils Facebook visités et envoie une alerte par SMS en cas de visite du profil d'une autre personne.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/stupid-hackathon.png",
 			links: [
@@ -452,10 +544,10 @@ export const DATA = {
 			dates: "23 - 25 Juin 2017",
 			location: "Toronto, Ontario",
 			description:
-				"Développement d'une bibliothèque Python intégrable à n'importe quel jeu Python, ajustant la difficulté en fonction des émotions du joueur en temps réel. Utilise OpenCV et une webcam pour la reconnaissance faciale, ainsi qu'un modèle d'apprentissage automatique personnalisé entraîné sur un jeu de données d'émotions de Kaggle via TensorFlow et Keras. Ce projet a remporté le 1er prix au Global AI Hackathon de Toronto et a été présenté chez NextAI Canada.",
+				"Développement d'une bibliothèque Python intégrable à n'importe quel jeu, ajustant la difficulté en fonction des émotions du joueur en temps réel. Utilise OpenCV et une webcam pour la reconnaissance faciale, ainsi qu'un modèle d'apprentissage automatique personnalisé entraîné sur un jeu de données d'émotions via TensorFlow et Keras. Ce projet a remporté le 1er prix du Global AI Hackathon de Toronto et a été présenté chez NextAI Canada.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/global-ai-hackathon.jpg",
-			win: "1st Place Winner",
+			win: "1er prix",
 			links: [
 				{
 					title: "Article",
@@ -487,7 +579,7 @@ export const DATA = {
 				"Développement d'une interface d'administration personnalisée pour la start-up de valorisation des déchets alimentaires Genecis afin de gérer leurs données et fournir des analyses.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/open-source-circular-economy-days.jpg",
-			win: "1st Place Winner",
+			win: "1er prix",
 			links: [
 				{
 					title: "Source",
@@ -501,13 +593,13 @@ export const DATA = {
 			dates: "19 - 21 Mai 2017",
 			location: "International",
 			description:
-				"Amélioration de PocketDoc et soumission à un concours en ligne.",
+				"Amélioration de l'application PocketDoc et soumission à un concours en ligne.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/make-school-hackathon.png",
-			win: "Top 10 Finalist | Honourable Mention",
+			win: "Top 10 finaliste | Mention honorable",
 			links: [
 				{
-					title: "Medium Article",
+					title: "Article Medium",
 					icon: <Icons.globe className="h-4 w-4" />,
 					href: "https://medium.com/make-school/the-winners-of-make-schools-student-app-competition-2017-a6b0e72f190a",
 				},
@@ -543,7 +635,7 @@ export const DATA = {
 			dates: "5 - 7 Mai 2017",
 			location: "Waterloo, Ontario",
 			description:
-				"Développement de Pocketdoc, une application où l'on prend en photo une plaie physique pour obtenir des solutions ou traitements courants aux blessures ou maladies.",
+				"Développement de PocketDoc, une application permettant de photographier une plaie physique afin d'obtenir des solutions ou traitements courants aux blessures ou maladies.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/waterloo-equithon.png",
 			links: [
@@ -602,10 +694,10 @@ export const DATA = {
 			dates: "4 - 5 Mars 2017",
 			location: "Waterloo, Ontario",
 			description:
-				"Développé lors du StartHacks 2017, Recipic is a mobile app which allows you to take pictures of ingredients around your house, and it will recognize those ingredients using ClarifAI image recognition API and return possible recipes to make. Recipic recieved 1st place at the hackathon for best pitch and hack.",
+				"Développée lors du StartHacks 2017, Recipic est une application mobile permettant de photographier les ingrédients disponibles chez soi ; l'application les reconnaît grâce à l'API de reconnaissance d'image ClarifAI et propose des recettes réalisables. Recipic a remporté la première place du hackathon pour le meilleur pitch et le meilleur projet.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/starthacks.png",
-			win: "1st Place Winner",
+			win: "1er prix",
 			mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg",
 			links: [
 				{
@@ -614,7 +706,7 @@ export const DATA = {
 					href: "https://github.com/mattBlackDesign/recipic-ionic",
 				},
 				{
-					title: "Source (Server)",
+					title: "Source (Serveur)",
 					icon: <Icons.github className="h-4 w-4" />,
 					href: "https://github.com/mattBlackDesign/recipic-rails",
 				},
@@ -663,7 +755,7 @@ export const DATA = {
 			dates: "29 Octobre 2016",
 			location: "Kingston, Ontario",
 			description:
-				"Développement d'un widget interne pour téléverser des devoirs en utilisant l'application portail de l'Université de Waterloo.",
+				"Développement d'un widget interne pour téléverser des devoirs via l'application portail de l'Université de Waterloo.",
 			image:
 				"https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/portal-hackathon.png",
 			links: [
@@ -675,4 +767,6 @@ export const DATA = {
 			],
 		},
 	],
-} as const;
+} as const satisfies ResumeData;
+
+export type { ResumeData };

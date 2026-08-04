@@ -179,3 +179,17 @@
 .container-md {
       @apply w-full max-w-5xl mx-auto py-5 px-1;
 }
+
+
+
+.backoffice-container-md {
+      @apply relative z-10 max-w-4xl mx-auto w-full;
+}
+
+.backoffice-title {
+   @apply text-2xl font-bold text-accent-foreground
+}
+
+.backoffice-description {
+   @apply text-sm text-muted-foreground
+}

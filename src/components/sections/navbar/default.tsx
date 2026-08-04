@@ -1,3 +1,5 @@
+import { Grid, LockIcon } from "lucide-react";
+import { useSession } from "#/hooks/use-session";
 import { ModeToggle } from "@/components/themes/theme-toggle";
 import { Dock, DockIcon } from "@/components/ui/dock";
 import { Separator } from "@/components/ui/separator";
@@ -6,13 +8,22 @@ import {
 	TooltipContent,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { DATA } from "@/config/resume";
+import { DATA, type NavbarItem } from "@/config/resume";
 
 export function Navbar() {
+	const session = useSession();
+
+	const navbars: NavbarItem[] = [
+		...DATA.navbar,
+		...(session.isAuthenticated
+			? [{ href: "/dashboard", label: "Tableau de bord", icon: Grid }]
+			: [{ href: "/auth/sign-in", label: "Connexion", icon: LockIcon }]),
+	];
+
 	return (
 		<div className="pointer-events-none fixed inset-x-0 bottom-4 z-30">
 			<Dock className="z-50 pointer-events-auto relative h-14 p-2 w-fit mx-auto flex gap-2 border bg-card/90 backdrop-blur-3xl shadow-[0_0_10px_3px] shadow-primary/5">
-				{DATA.navbar.map((item) => {
+				{navbars.map((item) => {
 					const isExternal = item.href.startsWith("http");
 					return (
 						<Tooltip key={item.href}>
