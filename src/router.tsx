@@ -1,4 +1,9 @@
 import { createRouter as createTanStackRouter } from "@tanstack/react-router";
+import {
+	ErrorPage,
+	NotFoundPage,
+} from "./components/sections/errors/error-page";
+import { Loader } from "./components/ui/loader";
 import { routeTree } from "./routeTree.gen";
 
 export function getRouter() {
@@ -7,6 +12,11 @@ export function getRouter() {
 		scrollRestoration: true,
 		defaultPreload: "intent",
 		defaultPreloadStaleTime: 0,
+		defaultErrorComponent: (props) => {
+			return <ErrorPage onReset={props.reset} message={props.error.message} />;
+		},
+		defaultPendingComponent: () => <Loader />,
+		defaultNotFoundComponent: () => <NotFoundPage />,
 	});
 
 	return router;

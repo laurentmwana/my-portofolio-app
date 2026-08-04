@@ -17,8 +17,7 @@ import { Route as PortofolioIndexRouteImport } from './routes/_portofolio/index'
 import { Route as PortofolioSkillsRouteImport } from './routes/_portofolio/skills'
 import { Route as ProtectedDashboardRouteImport } from './routes/_protected/dashboard'
 import { Route as ProtectedProfileRouteImport } from './routes/_protected/profile'
-import { Route as GuestAuthDemoRouteImport } from './routes/_guest/auth/demo'
-import { Route as GuestAuthLoginRouteImport } from './routes/_guest/auth/login'
+import { Route as GuestAuthSignInRouteImport } from './routes/_guest/auth/sign-in'
 import { Route as PortofolioEducationsIndexRouteImport } from './routes/_portofolio/educations/index'
 import { Route as PortofolioEducationsIdRouteImport } from './routes/_portofolio/educations/$id'
 import { Route as PortofolioHackathonsIndexRouteImport } from './routes/_portofolio/hackathons/index'
@@ -30,7 +29,15 @@ import { Route as PortofolioProjectsIdRouteImport } from './routes/_portofolio/p
 import { Route as PortofolioWorksIndexRouteImport } from './routes/_portofolio/works/index'
 import { Route as PortofolioWorksIdRouteImport } from './routes/_portofolio/works/$id'
 import { Route as ProtectedAdminAboutRouteImport } from './routes/_protected/admin/about'
+import { Route as ProtectedAdminContactRouteImport } from './routes/_protected/admin/contact'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as ProtectedAdminEducationsIndexRouteImport } from './routes/_protected/admin/educations/index'
+import { Route as ProtectedAdminHackathonsIndexRouteImport } from './routes/_protected/admin/hackathons/index'
+import { Route as ProtectedAdminProjectsIndexRouteImport } from './routes/_protected/admin/projects/index'
+import { Route as ProtectedAdminSkillsIndexRouteImport } from './routes/_protected/admin/skills/index'
+import { Route as ProtectedAdminSkillsNewRouteImport } from './routes/_protected/admin/skills/new'
+import { Route as ProtectedAdminWorksIndexRouteImport } from './routes/_protected/admin/works/index'
+import { Route as ProtectedAdminSkillsIdEditRouteImport } from './routes/_protected/admin/skills/$id.edit'
 
 const GuestRoute = GuestRouteImport.update({
   id: '/_guest',
@@ -69,14 +76,9 @@ const ProtectedProfileRoute = ProtectedProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => ProtectedRoute,
 } as any)
-const GuestAuthDemoRoute = GuestAuthDemoRouteImport.update({
-  id: '/demo',
-  path: '/demo',
-  getParentRoute: () => GuestAuthRoute,
-} as any)
-const GuestAuthLoginRoute = GuestAuthLoginRouteImport.update({
-  id: '/login',
-  path: '/login',
+const GuestAuthSignInRoute = GuestAuthSignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
   getParentRoute: () => GuestAuthRoute,
 } as any)
 const PortofolioEducationsIndexRoute =
@@ -136,11 +138,57 @@ const ProtectedAdminAboutRoute = ProtectedAdminAboutRouteImport.update({
   path: '/admin/about',
   getParentRoute: () => ProtectedRoute,
 } as any)
+const ProtectedAdminContactRoute = ProtectedAdminContactRouteImport.update({
+  id: '/admin/contact',
+  path: '/admin/contact',
+  getParentRoute: () => ProtectedRoute,
+} as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProtectedAdminEducationsIndexRoute =
+  ProtectedAdminEducationsIndexRouteImport.update({
+    id: '/admin/educations/',
+    path: '/admin/educations/',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
+const ProtectedAdminHackathonsIndexRoute =
+  ProtectedAdminHackathonsIndexRouteImport.update({
+    id: '/admin/hackathons/',
+    path: '/admin/hackathons/',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
+const ProtectedAdminProjectsIndexRoute =
+  ProtectedAdminProjectsIndexRouteImport.update({
+    id: '/admin/projects/',
+    path: '/admin/projects/',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
+const ProtectedAdminSkillsIndexRoute =
+  ProtectedAdminSkillsIndexRouteImport.update({
+    id: '/admin/skills/',
+    path: '/admin/skills/',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
+const ProtectedAdminSkillsNewRoute = ProtectedAdminSkillsNewRouteImport.update({
+  id: '/admin/skills/new',
+  path: '/admin/skills/new',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+const ProtectedAdminWorksIndexRoute =
+  ProtectedAdminWorksIndexRouteImport.update({
+    id: '/admin/works/',
+    path: '/admin/works/',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
+const ProtectedAdminSkillsIdEditRoute =
+  ProtectedAdminSkillsIdEditRouteImport.update({
+    id: '/admin/skills/$id/edit',
+    path: '/admin/skills/$id/edit',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof PortofolioIndexRoute
@@ -148,8 +196,7 @@ export interface FileRoutesByFullPath {
   '/skills': typeof PortofolioSkillsRoute
   '/dashboard': typeof ProtectedDashboardRoute
   '/profile': typeof ProtectedProfileRoute
-  '/auth/demo': typeof GuestAuthDemoRoute
-  '/auth/login': typeof GuestAuthLoginRoute
+  '/auth/sign-in': typeof GuestAuthSignInRoute
   '/educations/$id': typeof PortofolioEducationsIdRoute
   '/hackathons/$id': typeof PortofolioHackathonsIdRoute
   '/legal/cgv': typeof PortofolioLegalCgvRoute
@@ -157,11 +204,19 @@ export interface FileRoutesByFullPath {
   '/projects/$id': typeof PortofolioProjectsIdRoute
   '/works/$id': typeof PortofolioWorksIdRoute
   '/admin/about': typeof ProtectedAdminAboutRoute
+  '/admin/contact': typeof ProtectedAdminContactRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/educations/': typeof PortofolioEducationsIndexRoute
   '/hackathons/': typeof PortofolioHackathonsIndexRoute
   '/projects/': typeof PortofolioProjectsIndexRoute
   '/works/': typeof PortofolioWorksIndexRoute
+  '/admin/skills/new': typeof ProtectedAdminSkillsNewRoute
+  '/admin/educations/': typeof ProtectedAdminEducationsIndexRoute
+  '/admin/hackathons/': typeof ProtectedAdminHackathonsIndexRoute
+  '/admin/projects/': typeof ProtectedAdminProjectsIndexRoute
+  '/admin/skills/': typeof ProtectedAdminSkillsIndexRoute
+  '/admin/works/': typeof ProtectedAdminWorksIndexRoute
+  '/admin/skills/$id/edit': typeof ProtectedAdminSkillsIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof PortofolioIndexRoute
@@ -169,8 +224,7 @@ export interface FileRoutesByTo {
   '/skills': typeof PortofolioSkillsRoute
   '/dashboard': typeof ProtectedDashboardRoute
   '/profile': typeof ProtectedProfileRoute
-  '/auth/demo': typeof GuestAuthDemoRoute
-  '/auth/login': typeof GuestAuthLoginRoute
+  '/auth/sign-in': typeof GuestAuthSignInRoute
   '/educations/$id': typeof PortofolioEducationsIdRoute
   '/hackathons/$id': typeof PortofolioHackathonsIdRoute
   '/legal/cgv': typeof PortofolioLegalCgvRoute
@@ -178,11 +232,19 @@ export interface FileRoutesByTo {
   '/projects/$id': typeof PortofolioProjectsIdRoute
   '/works/$id': typeof PortofolioWorksIdRoute
   '/admin/about': typeof ProtectedAdminAboutRoute
+  '/admin/contact': typeof ProtectedAdminContactRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/educations': typeof PortofolioEducationsIndexRoute
   '/hackathons': typeof PortofolioHackathonsIndexRoute
   '/projects': typeof PortofolioProjectsIndexRoute
   '/works': typeof PortofolioWorksIndexRoute
+  '/admin/skills/new': typeof ProtectedAdminSkillsNewRoute
+  '/admin/educations': typeof ProtectedAdminEducationsIndexRoute
+  '/admin/hackathons': typeof ProtectedAdminHackathonsIndexRoute
+  '/admin/projects': typeof ProtectedAdminProjectsIndexRoute
+  '/admin/skills': typeof ProtectedAdminSkillsIndexRoute
+  '/admin/works': typeof ProtectedAdminWorksIndexRoute
+  '/admin/skills/$id/edit': typeof ProtectedAdminSkillsIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -194,8 +256,7 @@ export interface FileRoutesById {
   '/_protected/dashboard': typeof ProtectedDashboardRoute
   '/_protected/profile': typeof ProtectedProfileRoute
   '/_portofolio/': typeof PortofolioIndexRoute
-  '/_guest/auth/demo': typeof GuestAuthDemoRoute
-  '/_guest/auth/login': typeof GuestAuthLoginRoute
+  '/_guest/auth/sign-in': typeof GuestAuthSignInRoute
   '/_portofolio/educations/$id': typeof PortofolioEducationsIdRoute
   '/_portofolio/hackathons/$id': typeof PortofolioHackathonsIdRoute
   '/_portofolio/legal/cgv': typeof PortofolioLegalCgvRoute
@@ -203,11 +264,19 @@ export interface FileRoutesById {
   '/_portofolio/projects/$id': typeof PortofolioProjectsIdRoute
   '/_portofolio/works/$id': typeof PortofolioWorksIdRoute
   '/_protected/admin/about': typeof ProtectedAdminAboutRoute
+  '/_protected/admin/contact': typeof ProtectedAdminContactRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/_portofolio/educations/': typeof PortofolioEducationsIndexRoute
   '/_portofolio/hackathons/': typeof PortofolioHackathonsIndexRoute
   '/_portofolio/projects/': typeof PortofolioProjectsIndexRoute
   '/_portofolio/works/': typeof PortofolioWorksIndexRoute
+  '/_protected/admin/skills/new': typeof ProtectedAdminSkillsNewRoute
+  '/_protected/admin/educations/': typeof ProtectedAdminEducationsIndexRoute
+  '/_protected/admin/hackathons/': typeof ProtectedAdminHackathonsIndexRoute
+  '/_protected/admin/projects/': typeof ProtectedAdminProjectsIndexRoute
+  '/_protected/admin/skills/': typeof ProtectedAdminSkillsIndexRoute
+  '/_protected/admin/works/': typeof ProtectedAdminWorksIndexRoute
+  '/_protected/admin/skills/$id/edit': typeof ProtectedAdminSkillsIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -217,8 +286,7 @@ export interface FileRouteTypes {
     | '/skills'
     | '/dashboard'
     | '/profile'
-    | '/auth/demo'
-    | '/auth/login'
+    | '/auth/sign-in'
     | '/educations/$id'
     | '/hackathons/$id'
     | '/legal/cgv'
@@ -226,11 +294,19 @@ export interface FileRouteTypes {
     | '/projects/$id'
     | '/works/$id'
     | '/admin/about'
+    | '/admin/contact'
     | '/api/auth/$'
     | '/educations/'
     | '/hackathons/'
     | '/projects/'
     | '/works/'
+    | '/admin/skills/new'
+    | '/admin/educations/'
+    | '/admin/hackathons/'
+    | '/admin/projects/'
+    | '/admin/skills/'
+    | '/admin/works/'
+    | '/admin/skills/$id/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -238,8 +314,7 @@ export interface FileRouteTypes {
     | '/skills'
     | '/dashboard'
     | '/profile'
-    | '/auth/demo'
-    | '/auth/login'
+    | '/auth/sign-in'
     | '/educations/$id'
     | '/hackathons/$id'
     | '/legal/cgv'
@@ -247,11 +322,19 @@ export interface FileRouteTypes {
     | '/projects/$id'
     | '/works/$id'
     | '/admin/about'
+    | '/admin/contact'
     | '/api/auth/$'
     | '/educations'
     | '/hackathons'
     | '/projects'
     | '/works'
+    | '/admin/skills/new'
+    | '/admin/educations'
+    | '/admin/hackathons'
+    | '/admin/projects'
+    | '/admin/skills'
+    | '/admin/works'
+    | '/admin/skills/$id/edit'
   id:
     | '__root__'
     | '/_guest'
@@ -262,8 +345,7 @@ export interface FileRouteTypes {
     | '/_protected/dashboard'
     | '/_protected/profile'
     | '/_portofolio/'
-    | '/_guest/auth/demo'
-    | '/_guest/auth/login'
+    | '/_guest/auth/sign-in'
     | '/_portofolio/educations/$id'
     | '/_portofolio/hackathons/$id'
     | '/_portofolio/legal/cgv'
@@ -271,11 +353,19 @@ export interface FileRouteTypes {
     | '/_portofolio/projects/$id'
     | '/_portofolio/works/$id'
     | '/_protected/admin/about'
+    | '/_protected/admin/contact'
     | '/api/auth/$'
     | '/_portofolio/educations/'
     | '/_portofolio/hackathons/'
     | '/_portofolio/projects/'
     | '/_portofolio/works/'
+    | '/_protected/admin/skills/new'
+    | '/_protected/admin/educations/'
+    | '/_protected/admin/hackathons/'
+    | '/_protected/admin/projects/'
+    | '/_protected/admin/skills/'
+    | '/_protected/admin/works/'
+    | '/_protected/admin/skills/$id/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -343,18 +433,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProtectedProfileRouteImport
       parentRoute: typeof ProtectedRoute
     }
-    '/_guest/auth/demo': {
-      id: '/_guest/auth/demo'
-      path: '/demo'
-      fullPath: '/auth/demo'
-      preLoaderRoute: typeof GuestAuthDemoRouteImport
-      parentRoute: typeof GuestAuthRoute
-    }
-    '/_guest/auth/login': {
-      id: '/_guest/auth/login'
-      path: '/login'
-      fullPath: '/auth/login'
-      preLoaderRoute: typeof GuestAuthLoginRouteImport
+    '/_guest/auth/sign-in': {
+      id: '/_guest/auth/sign-in'
+      path: '/sign-in'
+      fullPath: '/auth/sign-in'
+      preLoaderRoute: typeof GuestAuthSignInRouteImport
       parentRoute: typeof GuestAuthRoute
     }
     '/_portofolio/educations/': {
@@ -434,6 +517,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProtectedAdminAboutRouteImport
       parentRoute: typeof ProtectedRoute
     }
+    '/_protected/admin/contact': {
+      id: '/_protected/admin/contact'
+      path: '/admin/contact'
+      fullPath: '/admin/contact'
+      preLoaderRoute: typeof ProtectedAdminContactRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
     '/api/auth/$': {
       id: '/api/auth/$'
       path: '/api/auth/$'
@@ -441,17 +531,64 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_protected/admin/educations/': {
+      id: '/_protected/admin/educations/'
+      path: '/admin/educations'
+      fullPath: '/admin/educations/'
+      preLoaderRoute: typeof ProtectedAdminEducationsIndexRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/admin/hackathons/': {
+      id: '/_protected/admin/hackathons/'
+      path: '/admin/hackathons'
+      fullPath: '/admin/hackathons/'
+      preLoaderRoute: typeof ProtectedAdminHackathonsIndexRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/admin/projects/': {
+      id: '/_protected/admin/projects/'
+      path: '/admin/projects'
+      fullPath: '/admin/projects/'
+      preLoaderRoute: typeof ProtectedAdminProjectsIndexRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/admin/skills/': {
+      id: '/_protected/admin/skills/'
+      path: '/admin/skills'
+      fullPath: '/admin/skills/'
+      preLoaderRoute: typeof ProtectedAdminSkillsIndexRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/admin/skills/new': {
+      id: '/_protected/admin/skills/new'
+      path: '/admin/skills/new'
+      fullPath: '/admin/skills/new'
+      preLoaderRoute: typeof ProtectedAdminSkillsNewRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/admin/works/': {
+      id: '/_protected/admin/works/'
+      path: '/admin/works'
+      fullPath: '/admin/works/'
+      preLoaderRoute: typeof ProtectedAdminWorksIndexRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/admin/skills/$id/edit': {
+      id: '/_protected/admin/skills/$id/edit'
+      path: '/admin/skills/$id/edit'
+      fullPath: '/admin/skills/$id/edit'
+      preLoaderRoute: typeof ProtectedAdminSkillsIdEditRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
   }
 }
 
 interface GuestAuthRouteChildren {
-  GuestAuthDemoRoute: typeof GuestAuthDemoRoute
-  GuestAuthLoginRoute: typeof GuestAuthLoginRoute
+  GuestAuthSignInRoute: typeof GuestAuthSignInRoute
 }
 
 const GuestAuthRouteChildren: GuestAuthRouteChildren = {
-  GuestAuthDemoRoute: GuestAuthDemoRoute,
-  GuestAuthLoginRoute: GuestAuthLoginRoute,
+  GuestAuthSignInRoute: GuestAuthSignInRoute,
 }
 
 const GuestAuthRouteWithChildren = GuestAuthRoute._addFileChildren(
@@ -506,12 +643,28 @@ interface ProtectedRouteChildren {
   ProtectedDashboardRoute: typeof ProtectedDashboardRoute
   ProtectedProfileRoute: typeof ProtectedProfileRoute
   ProtectedAdminAboutRoute: typeof ProtectedAdminAboutRoute
+  ProtectedAdminContactRoute: typeof ProtectedAdminContactRoute
+  ProtectedAdminSkillsNewRoute: typeof ProtectedAdminSkillsNewRoute
+  ProtectedAdminEducationsIndexRoute: typeof ProtectedAdminEducationsIndexRoute
+  ProtectedAdminHackathonsIndexRoute: typeof ProtectedAdminHackathonsIndexRoute
+  ProtectedAdminProjectsIndexRoute: typeof ProtectedAdminProjectsIndexRoute
+  ProtectedAdminSkillsIndexRoute: typeof ProtectedAdminSkillsIndexRoute
+  ProtectedAdminWorksIndexRoute: typeof ProtectedAdminWorksIndexRoute
+  ProtectedAdminSkillsIdEditRoute: typeof ProtectedAdminSkillsIdEditRoute
 }
 
 const ProtectedRouteChildren: ProtectedRouteChildren = {
   ProtectedDashboardRoute: ProtectedDashboardRoute,
   ProtectedProfileRoute: ProtectedProfileRoute,
   ProtectedAdminAboutRoute: ProtectedAdminAboutRoute,
+  ProtectedAdminContactRoute: ProtectedAdminContactRoute,
+  ProtectedAdminSkillsNewRoute: ProtectedAdminSkillsNewRoute,
+  ProtectedAdminEducationsIndexRoute: ProtectedAdminEducationsIndexRoute,
+  ProtectedAdminHackathonsIndexRoute: ProtectedAdminHackathonsIndexRoute,
+  ProtectedAdminProjectsIndexRoute: ProtectedAdminProjectsIndexRoute,
+  ProtectedAdminSkillsIndexRoute: ProtectedAdminSkillsIndexRoute,
+  ProtectedAdminWorksIndexRoute: ProtectedAdminWorksIndexRoute,
+  ProtectedAdminSkillsIdEditRoute: ProtectedAdminSkillsIdEditRoute,
 }
 
 const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(

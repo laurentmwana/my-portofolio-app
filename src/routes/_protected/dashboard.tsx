@@ -11,12 +11,12 @@ function Page() {
 	return (
 		<AdminLayout>
 			<div className="w-full">
-				<h1 className="text-2xl font-bold text-foreground mb-2">
-					Tableau de bord
-				</h1>
-				<p className="text-sm text-muted-foreground mb-4">
-					Gérez votre profil et vos projets
-				</p>
+				<div className="mb-4">
+					<h1 className="backoffice-title mb-2">Tableau de bord</h1>
+					<p className="backoffice-description">
+						Gérez votre profil et vos projets
+					</p>
+				</div>
 
 				<div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
 					<StatsCard
