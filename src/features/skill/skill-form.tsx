@@ -2,7 +2,6 @@ import { useForm } from "@tanstack/react-form";
 import { useState } from "react";
 import { Alert, AlertDescription } from "#/components/ui/alert";
 import { ButtonLoader } from "#/components/ui/button-loader";
-import { Checkbox } from "#/components/ui/checkbox";
 import {
 	Field,
 	FieldError,
@@ -12,9 +11,9 @@ import {
 import { FieldSelect } from "#/components/ui/field-select";
 import { Input } from "#/components/ui/input";
 import { Switch } from "#/components/ui/switch";
+import { Textarea } from "#/components/ui/textarea";
 import { getAllSkillIcons } from "#/constants/skill";
 import type { Skill } from "#/generated/prisma/client";
-import { cn } from "#/lib/utils";
 import { type SkillValues, skillSchema } from "#/schemas/skill.schema";
 
 type Props = {
@@ -26,7 +25,6 @@ type Props = {
 };
 
 export const SkillForm: React.FC<Props> = ({
-	className,
 	onSubmit,
 	isPending = false,
 	error: externalError,
@@ -116,10 +114,9 @@ export const SkillForm: React.FC<Props> = ({
 							return (
 								<Field data-invalid={isInvalid} className="gap-1.5">
 									<FieldLabel htmlFor={field.name}>Description</FieldLabel>
-									<Input
+									<Textarea
 										id={field.name}
 										name={field.name}
-										type="text"
 										placeholder="Description de la compétence"
 										aria-invalid={isInvalid}
 										value={field.state.value}

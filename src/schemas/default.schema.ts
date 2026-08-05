@@ -56,7 +56,7 @@ export const idSchema = z.object({
 export const paginationQuerySchema = z.object({
 	page: z.coerce.number().default(1),
 	limit: z.coerce.number().default(12).optional(),
-	search: z.string().optional(),
+	q: z.string().optional(),
 	orderBy: z.string().optional(),
 	direction: z.enum(["asc", "desc"]).default("desc").optional(),
 });

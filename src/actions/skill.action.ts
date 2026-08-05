@@ -31,6 +31,7 @@ export const findPaginatedSkillsPublished = createServerFn({
 			offset?: number;
 			orderBy?: string;
 			direction?: string;
+			search?: string;
 		}) => data,
 	)
 	.handler(
@@ -43,12 +44,37 @@ export const findPaginatedSkillsPublished = createServerFn({
 				direction: "desc",
 			},
 		}) => {
+			const searchCondition = data.search
+				? {
+						OR: [
+							{ name: { contains: data.search, mode: "insensitive" as const } },
+							{
+								description: {
+									contains: data.search,
+									mode: "insensitive" as const,
+								},
+							},
+							{
+								iconKey: {
+									contains: data.search,
+									mode: "insensitive" as const,
+								},
+							},
+						],
+					}
+				: {};
+
+			const whereClause = {
+				isPublished: true,
+				...searchCondition,
+			};
+
 			const [count, items] = await prisma.$transaction([
-				prisma.skill.count({ where: { isPublished: true } }),
+				prisma.skill.count({ where: whereClause }),
 				prisma.skill.findMany({
-					where: { isPublished: true },
+					where: whereClause,
 					orderBy: {
-						[data.orderBy as keyof typeof prisma.skill]: data.direction,
+						[data.orderBy as keyof typeof prisma.skill.fields]: data.direction,
 					},
 					take: data.limit,
 					skip: data.offset,
@@ -68,6 +94,7 @@ export const findPaginatedSkills = createServerFn({
 			offset?: number;
 			orderBy?: string;
 			direction?: string;
+			search?: string;
 		}) => data,
 	)
 	.handler(
@@ -80,11 +107,34 @@ export const findPaginatedSkills = createServerFn({
 				direction: "desc",
 			},
 		}) => {
+			const searchCondition = data.search
+				? {
+						OR: [
+							{ name: { contains: data.search, mode: "insensitive" as const } },
+							{
+								description: {
+									contains: data.search,
+									mode: "insensitive" as const,
+								},
+							},
+							{
+								iconKey: {
+									contains: data.search,
+									mode: "insensitive" as const,
+								},
+							},
+						],
+					}
+				: {};
+
 			const [count, items] = await prisma.$transaction([
-				prisma.skill.count(),
+				prisma.skill.count({
+					where: searchCondition,
+				}),
 				prisma.skill.findMany({
+					where: searchCondition,
 					orderBy: {
-						[data.orderBy as keyof typeof prisma.skill]: data.direction,
+						[data.orderBy as keyof typeof prisma.skill.fields]: data.direction,
 					},
 					take: data.limit,
 					skip: data.offset,
@@ -111,7 +161,6 @@ export const findSkill = createServerFn({ method: "GET" })
 export const updateSkill = createServerFn({ method: "POST" })
 	.validator((data: { id: string; formData: SkillValues }) => data)
 	.handler(async ({ data }) => {
-		// Vérifier si une autre compétence possède déjà ce nom
 		const existingSkill = await prisma.skill.findFirst({
 			where: {
 				name: data.formData.name,
@@ -155,4 +204,16 @@ export const createSkill = createServerFn({ method: "POST" })
 				slug: generateSlug(data.name),
 			},
 		});
+	});
+
+export const countSkills = createServerFn({ method: "GET" })
+	.validator((data: { isPublished: boolean | null }) => data)
+	.handler(async ({ data }) => {
+		if (data.isPublished) {
+			return await prisma.skill.count({
+				where: { isPublished: data.isPublished },
+			});
+		}
+
+		return await prisma.skill.count();
 	});
