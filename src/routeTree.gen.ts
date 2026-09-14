@@ -33,6 +33,7 @@ import { Route as ProtectedAdminContactRouteImport } from './routes/_protected/a
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as ProtectedAdminEducationsIndexRouteImport } from './routes/_protected/admin/educations/index'
 import { Route as ProtectedAdminHackathonsIndexRouteImport } from './routes/_protected/admin/hackathons/index'
+import { Route as ProtectedAdminPostsIndexRouteImport } from './routes/_protected/admin/posts/index'
 import { Route as ProtectedAdminProjectsIndexRouteImport } from './routes/_protected/admin/projects/index'
 import { Route as ProtectedAdminSkillsIndexRouteImport } from './routes/_protected/admin/skills/index'
 import { Route as ProtectedAdminSkillsNewRouteImport } from './routes/_protected/admin/skills/new'
@@ -160,6 +161,12 @@ const ProtectedAdminHackathonsIndexRoute =
     path: '/admin/hackathons/',
     getParentRoute: () => ProtectedRoute,
   } as any)
+const ProtectedAdminPostsIndexRoute =
+  ProtectedAdminPostsIndexRouteImport.update({
+    id: '/admin/posts/',
+    path: '/admin/posts/',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
 const ProtectedAdminProjectsIndexRoute =
   ProtectedAdminProjectsIndexRouteImport.update({
     id: '/admin/projects/',
@@ -213,6 +220,7 @@ export interface FileRoutesByFullPath {
   '/admin/skills/new': typeof ProtectedAdminSkillsNewRoute
   '/admin/educations/': typeof ProtectedAdminEducationsIndexRoute
   '/admin/hackathons/': typeof ProtectedAdminHackathonsIndexRoute
+  '/admin/posts/': typeof ProtectedAdminPostsIndexRoute
   '/admin/projects/': typeof ProtectedAdminProjectsIndexRoute
   '/admin/skills/': typeof ProtectedAdminSkillsIndexRoute
   '/admin/works/': typeof ProtectedAdminWorksIndexRoute
@@ -241,6 +249,7 @@ export interface FileRoutesByTo {
   '/admin/skills/new': typeof ProtectedAdminSkillsNewRoute
   '/admin/educations': typeof ProtectedAdminEducationsIndexRoute
   '/admin/hackathons': typeof ProtectedAdminHackathonsIndexRoute
+  '/admin/posts': typeof ProtectedAdminPostsIndexRoute
   '/admin/projects': typeof ProtectedAdminProjectsIndexRoute
   '/admin/skills': typeof ProtectedAdminSkillsIndexRoute
   '/admin/works': typeof ProtectedAdminWorksIndexRoute
@@ -273,6 +282,7 @@ export interface FileRoutesById {
   '/_protected/admin/skills/new': typeof ProtectedAdminSkillsNewRoute
   '/_protected/admin/educations/': typeof ProtectedAdminEducationsIndexRoute
   '/_protected/admin/hackathons/': typeof ProtectedAdminHackathonsIndexRoute
+  '/_protected/admin/posts/': typeof ProtectedAdminPostsIndexRoute
   '/_protected/admin/projects/': typeof ProtectedAdminProjectsIndexRoute
   '/_protected/admin/skills/': typeof ProtectedAdminSkillsIndexRoute
   '/_protected/admin/works/': typeof ProtectedAdminWorksIndexRoute
@@ -303,6 +313,7 @@ export interface FileRouteTypes {
     | '/admin/skills/new'
     | '/admin/educations/'
     | '/admin/hackathons/'
+    | '/admin/posts/'
     | '/admin/projects/'
     | '/admin/skills/'
     | '/admin/works/'
@@ -331,6 +342,7 @@ export interface FileRouteTypes {
     | '/admin/skills/new'
     | '/admin/educations'
     | '/admin/hackathons'
+    | '/admin/posts'
     | '/admin/projects'
     | '/admin/skills'
     | '/admin/works'
@@ -362,6 +374,7 @@ export interface FileRouteTypes {
     | '/_protected/admin/skills/new'
     | '/_protected/admin/educations/'
     | '/_protected/admin/hackathons/'
+    | '/_protected/admin/posts/'
     | '/_protected/admin/projects/'
     | '/_protected/admin/skills/'
     | '/_protected/admin/works/'
@@ -545,6 +558,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProtectedAdminHackathonsIndexRouteImport
       parentRoute: typeof ProtectedRoute
     }
+    '/_protected/admin/posts/': {
+      id: '/_protected/admin/posts/'
+      path: '/admin/posts'
+      fullPath: '/admin/posts/'
+      preLoaderRoute: typeof ProtectedAdminPostsIndexRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
     '/_protected/admin/projects/': {
       id: '/_protected/admin/projects/'
       path: '/admin/projects'
@@ -647,6 +667,7 @@ interface ProtectedRouteChildren {
   ProtectedAdminSkillsNewRoute: typeof ProtectedAdminSkillsNewRoute
   ProtectedAdminEducationsIndexRoute: typeof ProtectedAdminEducationsIndexRoute
   ProtectedAdminHackathonsIndexRoute: typeof ProtectedAdminHackathonsIndexRoute
+  ProtectedAdminPostsIndexRoute: typeof ProtectedAdminPostsIndexRoute
   ProtectedAdminProjectsIndexRoute: typeof ProtectedAdminProjectsIndexRoute
   ProtectedAdminSkillsIndexRoute: typeof ProtectedAdminSkillsIndexRoute
   ProtectedAdminWorksIndexRoute: typeof ProtectedAdminWorksIndexRoute
@@ -661,6 +682,7 @@ const ProtectedRouteChildren: ProtectedRouteChildren = {
   ProtectedAdminSkillsNewRoute: ProtectedAdminSkillsNewRoute,
   ProtectedAdminEducationsIndexRoute: ProtectedAdminEducationsIndexRoute,
   ProtectedAdminHackathonsIndexRoute: ProtectedAdminHackathonsIndexRoute,
+  ProtectedAdminPostsIndexRoute: ProtectedAdminPostsIndexRoute,
   ProtectedAdminProjectsIndexRoute: ProtectedAdminProjectsIndexRoute,
   ProtectedAdminSkillsIndexRoute: ProtectedAdminSkillsIndexRoute,
   ProtectedAdminWorksIndexRoute: ProtectedAdminWorksIndexRoute,
