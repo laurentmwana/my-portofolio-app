@@ -57,3 +57,15 @@ export const findPublishedPostsByCategoryIdFn = createServerFn({
 			},
 		});
 	});
+
+export const countPosts = createServerFn({ method: "GET" })
+	.validator((data: { isPublished: boolean | null }) => data)
+	.handler(async ({ data }) => {
+		if (data.isPublished) {
+			return await prisma.post.count({
+				where: { isPublished: data.isPublished },
+			});
+		}
+
+		return await prisma.post.count();
+	});

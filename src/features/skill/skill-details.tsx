@@ -1,7 +1,7 @@
 import { Badge } from "#/components/ui/badge";
+import { getSkillIcon } from "#/constants/skill";
 import type { Skill } from "#/generated/prisma/client";
 import { excerpt } from "#/lib/string";
-import { getSkillIcon } from ".";
 
 type SkillDetailsProps = { skill: Skill };
 

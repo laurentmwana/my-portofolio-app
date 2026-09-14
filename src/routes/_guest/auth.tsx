@@ -1,10 +1,8 @@
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { LogoIcon } from "#/shared/logo";
-import { Loader } from "@/components/ui/loader";
 
 export const Route = createFileRoute("/_guest/auth")({
 	component: AuthLayout,
-	pendingComponent: () => <Loader />,
 });
 
 function AuthLayout() {

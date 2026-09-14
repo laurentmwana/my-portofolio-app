@@ -76,3 +76,15 @@ export const findPaginatedEducationsPublished = createServerFn({
 			return { count, items };
 		},
 	);
+
+export const countEducations = createServerFn({ method: "GET" })
+	.validator((data: { isPublished: boolean | null }) => data)
+	.handler(async ({ data }) => {
+		if (data.isPublished) {
+			return await prisma.education.count({
+				where: { isPublished: data.isPublished },
+			});
+		}
+
+		return await prisma.education.count();
+	});

@@ -7,6 +7,7 @@ import {
 	PaginationNext,
 	PaginationPrevious,
 } from "#/components/ui/pagination";
+import { cn } from "#/lib/utils";
 
 interface DataPaginationProps {
 	href?: string;
@@ -14,6 +15,7 @@ interface DataPaginationProps {
 	itemsPerPage: number;
 	totalItems: number;
 	onPageChange: (page: number) => void;
+	className?: string;
 }
 
 export function DataPagination({
@@ -22,6 +24,7 @@ export function DataPagination({
 	itemsPerPage,
 	totalItems,
 	onPageChange,
+	className,
 }: DataPaginationProps) {
 	const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
 
@@ -30,54 +33,60 @@ export function DataPagination({
 	const pages = getPageRange(page, totalPages);
 
 	return (
-		<Pagination>
-			<PaginationContent>
-				<PaginationItem>
-					<PaginationPrevious
-						href={href}
-						text="Précédent"
-						onClick={(e) => {
-							e.preventDefault();
-							if (page > 1) onPageChange(page - 1);
-						}}
-						className={page <= 1 ? "pointer-events-none opacity-50" : undefined}
-					/>
-				</PaginationItem>
+		<div className={cn("my-5", className)}>
+			<Pagination>
+				<PaginationContent>
+					<PaginationItem>
+						<PaginationPrevious
+							href={href}
+							text="Précédent"
+							onClick={(e) => {
+								e.preventDefault();
+								if (page > 1) onPageChange(page - 1);
+							}}
+							className={
+								page <= 1 ? "pointer-events-none opacity-50" : undefined
+							}
+						/>
+					</PaginationItem>
 
-				{pages.map((p, i) =>
-					p === "ellipsis" ? (
-						<PaginationItem key={`ellipsis-${i.toString()}`}>
-							<PaginationEllipsis />
-						</PaginationItem>
-					) : (
-						<PaginationItem key={p}>
-							<PaginationLink
-								isActive={p === page}
-								onClick={(e) => {
-									e.preventDefault();
-									onPageChange(p);
-								}}
-							>
-								{p}
-							</PaginationLink>
-						</PaginationItem>
-					),
-				)}
+					{pages.map((p, i) =>
+						p === "ellipsis" ? (
+							<PaginationItem key={`ellipsis-${i.toString()}`}>
+								<PaginationEllipsis />
+							</PaginationItem>
+						) : (
+							<PaginationItem key={p}>
+								<PaginationLink
+									isActive={p === page}
+									onClick={(e) => {
+										e.preventDefault();
+										onPageChange(p);
+									}}
+								>
+									{p}
+								</PaginationLink>
+							</PaginationItem>
+						),
+					)}
 
-				<PaginationItem>
-					<PaginationNext
-						text="Suivant"
-						onClick={(e) => {
-							e.preventDefault();
-							if (page < totalPages) onPageChange(page + 1);
-						}}
-						className={
-							page >= totalPages ? "pointer-events-none opacity-50" : undefined
-						}
-					/>
-				</PaginationItem>
-			</PaginationContent>
-		</Pagination>
+					<PaginationItem>
+						<PaginationNext
+							text="Suivant"
+							onClick={(e) => {
+								e.preventDefault();
+								if (page < totalPages) onPageChange(page + 1);
+							}}
+							className={
+								page >= totalPages
+									? "pointer-events-none opacity-50"
+									: undefined
+							}
+						/>
+					</PaginationItem>
+				</PaginationContent>
+			</Pagination>
+		</div>
 	);
 }
 

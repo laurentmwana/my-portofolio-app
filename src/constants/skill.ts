@@ -35,3 +35,16 @@ export const getSkillIcon = (name: string | null) => {
 	const normalizedName = name.toLowerCase() as SkillName;
 	return SKILL_ICONS[normalizedName] || DefaultIcon;
 };
+
+export const getAllSkillIcons = () => {
+	return [
+		{ name: "default", icon: DefaultIcon },
+		...Object.entries(SKILL_ICONS).map(([key, value]) => {
+			return { name: key, icon: value };
+		}),
+	];
+};
+
+export const getAllSkillNames = () => {
+	return ["default", ...Object.keys(SKILL_ICONS)];
+};

@@ -83,7 +83,7 @@ export const SessionProvider: React.FC<{ children: React.ReactNode }> = ({
 	const session = useSession();
 
 	const handleExpired = React.useCallback(async () => {
-		if (location.pathname === "/auth/login") return;
+		if (location.pathname === "/auth/sign-in") return;
 
 		toast.dismiss();
 		toast.warning("Session expirée", {
@@ -92,7 +92,7 @@ export const SessionProvider: React.FC<{ children: React.ReactNode }> = ({
 		});
 
 		await navigate({
-			to: "/auth/login",
+			to: "/auth/sign-in",
 			search: { redirect: location.pathname },
 		});
 	}, [location.pathname, navigate]);

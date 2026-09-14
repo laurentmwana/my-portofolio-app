@@ -74,3 +74,15 @@ export const findPaginatedProjectsPublished = createServerFn({
 			return { count, items };
 		},
 	);
+
+export const countProjects = createServerFn({ method: "GET" })
+	.validator((data: { isPublished: boolean | null }) => data)
+	.handler(async ({ data }) => {
+		if (data.isPublished) {
+			return await prisma.project.count({
+				where: { isPublished: data.isPublished },
+			});
+		}
+
+		return await prisma.project.count();
+	});

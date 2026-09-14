@@ -73,3 +73,15 @@ export const findPaginatedHackathonsPublished = createServerFn({
 			return { count, items };
 		},
 	);
+
+export const countHackathons = createServerFn({ method: "GET" })
+	.validator((data: { isPublished: boolean | null }) => data)
+	.handler(async ({ data }) => {
+		if (data.isPublished) {
+			return await prisma.hackathon.count({
+				where: { isPublished: data.isPublished },
+			});
+		}
+
+		return await prisma.hackathon.count();
+	});

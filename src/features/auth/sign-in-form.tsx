@@ -19,7 +19,7 @@ type Props = {
 	error?: string | null;
 };
 
-export const LoginForm: React.FC<Props> = ({
+export const SignInForm: React.FC<Props> = ({
 	className,
 	onSubmit,
 	isPending = false,
@@ -52,7 +52,12 @@ export const LoginForm: React.FC<Props> = ({
 	});
 
 	return (
-		<div className={cn("w-full max-w-md mx-auto border border-border/60 bg-card text-card-foreground rounded-2xl shadow-xl p-6 sm:p-8 ring-2 ring-border/5 transition-all duration-300 hover:shadow-2xl hover:border-primary/20", className)}>
+		<div
+			className={cn(
+				"w-full max-w-md mx-auto border border-border/60 bg-card text-card-foreground rounded-2xl p-6 sm:p-8 ring-2 ring-border/5 transition-all duration-300  hover:border-primary/20",
+				className,
+			)}
+		>
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();
@@ -63,8 +68,12 @@ export const LoginForm: React.FC<Props> = ({
 			>
 				<FieldGroup className="gap-6">
 					<div className="flex flex-col items-center gap-2 text-center pb-4 border-b border-border/50">
-						<h2 className="text-2xl font-bold tracking-tight text-foreground bg-gradient-to-r from-foreground via-foreground/95 to-primary bg-clip-text text-transparent">Se connecter</h2>
-						<p className="text-xs text-muted-foreground font-light">Entrez vos identifiants pour accéder à votre espace</p>
+						<h2 className="text-2xl font-bold tracking-tight text-foreground bg-gradient-to-r from-foreground via-foreground/95 to-primary bg-clip-text text-transparent">
+							Se connecter
+						</h2>
+						<p className="text-xs text-muted-foreground font-light">
+							Entrez vos identifiants pour accéder à votre espace
+						</p>
 					</div>
 
 					<form.Field name="email">
@@ -73,7 +82,12 @@ export const LoginForm: React.FC<Props> = ({
 								field.state.meta.isTouched && !field.state.meta.isValid;
 							return (
 								<Field data-invalid={isInvalid} className="gap-1.5">
-									<FieldLabel htmlFor={field.name} className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email</FieldLabel>
+									<FieldLabel
+										htmlFor={field.name}
+										className="text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+									>
+										Email
+									</FieldLabel>
 									<Input
 										id={field.name}
 										name={field.name}
@@ -85,10 +99,12 @@ export const LoginForm: React.FC<Props> = ({
 										onBlur={field.handleBlur}
 										onChange={(e) => field.handleChange(e.target.value)}
 										disabled={isPending}
-										className="h-10 transition-all border-border/60 focus-visible:ring-primary/30"
 									/>
 									{isInvalid && (
-										<FieldError errors={field.state.meta.errors.slice(0, 1)} className="text-xs mt-1" />
+										<FieldError
+											errors={field.state.meta.errors.slice(0, 1)}
+											className="text-xs mt-1"
+										/>
 									)}
 								</Field>
 							);
@@ -102,7 +118,12 @@ export const LoginForm: React.FC<Props> = ({
 							return (
 								<Field data-invalid={isInvalid} className="gap-1.5">
 									<div className="flex items-center justify-between gap-2">
-										<FieldLabel htmlFor={field.name} className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Mot de passe</FieldLabel>
+										<FieldLabel
+											htmlFor={field.name}
+											className="text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+										>
+											Mot de passe
+										</FieldLabel>
 									</div>
 									<Input
 										id={field.name}
@@ -115,10 +136,12 @@ export const LoginForm: React.FC<Props> = ({
 										onBlur={field.handleBlur}
 										onChange={(e) => field.handleChange(e.target.value)}
 										disabled={isPending}
-										className="h-10 transition-all border-border/60 focus-visible:ring-primary/30"
 									/>
 									{isInvalid && (
-										<FieldError errors={field.state.meta.errors.slice(0, 1)} className="text-xs mt-1" />
+										<FieldError
+											errors={field.state.meta.errors.slice(0, 1)}
+											className="text-xs mt-1"
+										/>
 									)}
 								</Field>
 							);
@@ -126,7 +149,10 @@ export const LoginForm: React.FC<Props> = ({
 					</form.Field>
 
 					{displayError && (
-						<Alert variant="destructive" className="py-2.5 rounded-lg text-xs bg-destructive/5 border-destructive">
+						<Alert
+							variant="destructive"
+							className="py-2.5 rounded-lg text-xs bg-destructive/5 border-destructive"
+						>
 							<AlertDescription>{displayError}</AlertDescription>
 						</Alert>
 					)}
@@ -142,7 +168,9 @@ export const LoginForm: React.FC<Props> = ({
 									disabled={!canSubmit || isPending}
 									className="h-10 font-medium tracking-wide shadow-sm hover:shadow transition-all w-full cursor-pointer"
 								>
-									{isSubmitting || isPending ? "Connexion en cours…" : "Se connecter"}
+									{isSubmitting || isPending
+										? "Connexion en cours…"
+										: "Se connecter"}
 								</ButtonLoader>
 							)}
 						</form.Subscribe>

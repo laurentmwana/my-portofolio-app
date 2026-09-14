@@ -10,10 +10,10 @@ import {
 	HoverCardContent,
 	HoverCardTrigger,
 } from "#/components/ui/hover-card";
+import { getSkillIcon } from "#/constants/skill";
 import type { Skill } from "#/generated/prisma/client";
 import { ago } from "#/lib/format-date";
 import { excerpt } from "#/lib/string";
-import { getSkillIcon } from ".";
 
 type SkillCardProps = { skill: Skill };
 
